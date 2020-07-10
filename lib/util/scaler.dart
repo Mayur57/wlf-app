@@ -57,4 +57,3 @@ class SizeConfig{
     print(_blockWidth);
   }
 }
-

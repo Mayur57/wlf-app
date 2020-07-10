@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wlf/util/scaler.dart';
+import 'package:wlf/screens/blog.dart';
 
 import 'config/routes.dart';
 
