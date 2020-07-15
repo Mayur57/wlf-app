@@ -7,7 +7,7 @@ import 'config/routes.dart';
 
 void main() => runApp(MyApp());
 
-Color bg = Color(0xFF062D4C);
+Color bg = Color(0xffF8BC4E);
 
 //Introduction page
 class MyApp extends StatelessWidget {
