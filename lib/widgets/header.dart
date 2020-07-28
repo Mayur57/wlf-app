@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wlf/util/scaler.dart';
 
 import '../util/scaler.dart';
-import '../util/scaler.dart';
-import '../util/scaler.dart';
+
 
 class Header extends StatefulWidget {
   @override

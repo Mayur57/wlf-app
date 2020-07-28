@@ -1,141 +1,161 @@
-import 'dart:convert';
 import 'dart:ui';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wlf/entity/blog_card.dart';
-import 'package:wlf/widgets/header.dart';
+import 'package:wlf/screens/content.dart';
+import 'package:wlf/util/scaler.dart';
 import 'package:wlf/widgets/navbar.dart';
-import 'package:http/http.dart' as http;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BlogPage extends StatefulWidget {
   @override
   _BlogPageState createState() => _BlogPageState();
-
-
 }
-//class BlogCard{
-//  String title;
-//  String article;
-//
-//  BlogCard(this.title,this.article);
-//
-//// BlogCard.fromJSON(Map<String, dynamic> json){
-////   title = json["title"];
-////   article = json["article"];
-//// }
-//}
 
 class _BlogPageState extends State<BlogPage> {
-  final _firestore = Firestore.instance;
-  String title;
-  String article;
-  var i=0;
-  var titles=[];
-  var articles=[];
 
-  List<BlogCard> _blogCards = [
-    BlogCard("title0","article0"),
-    BlogCard("title-1","article-1")
-  ];
-
-//  Future<List<BlogCard>> fetchBlogs() async {
-//    var url = 'https://drive.google.com/file/d/1gEznNSAJZJOHWPEMoB2x9bPJeHsoW9oA/view?usp=sharing';
-//    var blogs = List<BlogCard>();
-//    var response = await http.get(url);
-//    if (response.statusCode == 200) {
-//      var blogsJson = json.decode(response.body);
-//      for (var blogJson in blogsJson) {
-//        blogs.add(BlogCard.fromJSON(blogJson));
-//      }
-//    } else {
-//      print("Could not fetch data");
-//    }
-//    return blogs;
-//  }
+  bool fab = false;
+  ScrollController _scrollController = new ScrollController();
 
   @override
   void initState() {
-//    fetchBlogs().then((value){
-//      setState(() {
-//        _blogCards.addAll(value);
-//      });
-//    });
-  _getBlog();
-  super.initState();
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels > 500) {
+        setState(() => fab = true);
+      } else {
+        setState(() => fab = false);
+      }
+    });
   }
-   _getBlog() async {
-    final blogs = await _firestore.collection('blogs').getDocuments();
-setState(() {
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
 
-  for (var blog in blogs.documents) {
-    titles.add(blog.data["title"]);
-    articles.add(blog.data["article"]);
-    _blogCards.add( BlogCard(blog.data["title"],blog.data["article"]));
-    print( _blogCards[i].article);
-    print( _blogCards[i].title);
+        actions: <Widget>[
+          InkWell(
+            child:IconButton(icon: Icon(
+              Icons.notifications,
+              color: Colors.white,
+              size: 3.5 *SizeConfig.heightSizeMultiplier,
+            ),
+          )
 
-    i++;
-  }
-  for(var title in titles ){
-    print(title);
-  }
-  print(i);
-});
-
-
-}
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-//        floatingActionButton: FloatingActionButton(
-//            onPressed: () {
-//
-//            _getBlog();
-//            setState(() {
-//
-//            });
-//
-//            }
-//
-//        ),
-        backgroundColor: Color(0xFFFEEED7),
-        bottomNavigationBar: SizedBox(
-          height: 75,
-          child: CustomNavbar(),
-        ),
-        body: SafeArea(
-          child: Stack(
-            children: <Widget>[
-                     ListView.builder(
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-//                            _blogCards[index].title,
-                          _blogCards[index].title,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 24),
+              )
+        ],
+        title: Text("Whatup' Life Foundation"),
+        centerTitle: true,
+        backgroundColor: Colors.lightBlueAccent ,
+        elevation: 0,
+      ),
+      floatingActionButton: !fab
+          ? null
+          : FloatingActionButton(
+              child: Icon(Icons.arrow_upward),
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.blue,
+              onPressed: () {
+                _scrollController.animateTo(0,
+                    duration: new Duration(seconds: 1), curve: Curves.ease);
+              },
+            ),
+      backgroundColor: Colors.lightBlueAccent,
+      bottomNavigationBar: SizedBox(
+        height: 75,
+        child: CustomNavbar(),
+      ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance.collection("blogs").snapshots(),
+        builder: (context, snapshot) {
+          return !snapshot.hasData
+              ? Text("Check Internet Connection")
+              : ListView.builder(
+                  controller: _scrollController,
+                  itemCount: snapshot.data.documents.length,
+                  itemBuilder: (context, index) {
+                    DocumentSnapshot _blog = snapshot.data.documents[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ContentPage(
+                                    _blog.data["title"],
+                                    _blog.data["article"],
+                                    _blog.data["author"])));
+                      },
+                      child: Container(
+                        // alignment: null,
+                        height: 280,
+                        child: Card(
+                          color: Colors.white.withOpacity(0),
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
                           ),
-                          Text(
-                            _blogCards[index].article,
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
+                          margin: EdgeInsets.all(10),
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Stack(
+                            children: <Widget>[
+                              Container(
+                                height: 280.0,
+                                margin: EdgeInsets.all(2.0),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    color: Colors.transparent,
+                                    image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: CachedNetworkImageProvider(_blog.data["image_url"]),
+                                    )),
+                              ),
+                              Container(
+                                height: 280,
+                                padding: EdgeInsets.all(10.0),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    color: Colors.blue,
+                                    gradient: LinearGradient(
+                                        begin: FractionalOffset.topCenter,
+                                        end: FractionalOffset.bottomCenter,
+                                        colors: [
+                                          Colors.black.withOpacity(0.6),
+                                          Colors.black.withOpacity(0.6),
+                                        ],
+                                        stops: [
+                                          0.0,
+                                          1.0
+                                        ])),
+                              ),
+                              Container(
+                                height: 280,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 20.0, vertical: 12.0),
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  _blog.data["title"].length > 60
+                                      ? _blog.data["title"].substring(0, 60) +
+                                          '...'
+                                      : _blog.data["title"],
+                                  style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              0.025,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-                itemCount: _blogCards.length,
-              ),
-              Header(),
-            ],
-          ),
-        ),
-      );
-    }
+                    );
+                  });
+        },
+      ),
+    );
   }
-
+}
