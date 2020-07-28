@@ -5,14 +5,36 @@ import 'package:flutter/material.dart';
 import 'package:wlf/screens/content.dart';
 import 'package:wlf/util/scaler.dart';
 import 'package:wlf/widgets/navbar.dart';
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BlogPage extends StatefulWidget {
   @override
   _BlogPageState createState() => _BlogPageState();
+
+
 }
+//class BlogCard{
+//  String title;
+//  String article;
+//
+//  BlogCard(this.title,this.article);
+//
+//// BlogCard.fromJSON(Map<String, dynamic> json){
+////   title = json["title"];
+////   article = json["article"];
+//// }
+//}
 
 class _BlogPageState extends State<BlogPage> {
+  final _firestore = Firestore.instance;
+  String title;
+  String article;
+  var i=0;
+  var titles=[];
+  var articles=[];
+
 
   bool fab = false;
   ScrollController _scrollController = new ScrollController();
@@ -27,7 +49,12 @@ class _BlogPageState extends State<BlogPage> {
         setState(() => fab = false);
       }
     });
+
   }
+   _getBlog() async {
+    final blogs = await _firestore.collection('blogs').getDocuments();
+setState(() {
+
 
   @override
   Widget build(BuildContext context) {
@@ -157,5 +184,6 @@ class _BlogPageState extends State<BlogPage> {
         },
       ),
     );
+
   }
-}
+

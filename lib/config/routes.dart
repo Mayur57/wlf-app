@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wlf/screens/blog.dart';
 import 'package:wlf/screens/contactus.dart';
+
 import 'package:wlf/screens/content.dart';
+
 import 'package:wlf/screens/error_page.dart';
 import 'package:wlf/screens/login.dart';
-
 
 
 
@@ -16,7 +17,9 @@ class RouteGenerator {
     switch(settings.name) {
       case '/home':
         return MaterialPageRoute(builder: (_) =>BlogPage() );
+
 //
+
 //        return MaterialPageRoute(builder: (_) => ContactUs());
       //case '/signupInitial':
       //  return MaterialPageRoute(builder: (_) => ThankyouPage());
