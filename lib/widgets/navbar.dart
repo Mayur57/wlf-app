@@ -11,6 +11,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.white.withOpacity(0.5),
       currentIndex: _currentIndex,
       iconSize: 36,
       elevation: 40,
@@ -19,38 +20,38 @@ class _CustomNavbarState extends State<CustomNavbar> {
         BottomNavigationBarItem(
           icon: Icon(
             Icons.home,
-            color: Colors.black,
+            color: Colors.white,
           ),
           title: Text(
-            "PROFILE",
+            "Blogs",
             style: TextStyle(
-              color: Colors.brown,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home,
-            color: Colors.black,
+            Icons.supervisor_account,
+            color: Colors.white,
           ),
           title: Text(
-            "OUR BLOG",
+            "Contact us",
             style: TextStyle(
-              color: Colors.brown,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home,
-            color: Colors.black,
+            Icons.account_circle,
+            color: Colors.white,
           ),
           title: Text(
-            "REACH US",
+            "My Account",
             style: TextStyle(
-              color: Colors.brown,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),

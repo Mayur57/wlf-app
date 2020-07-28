@@ -1,0 +1,50 @@
+{
+  "project_info": {
+
+    "project_number": "1079927007382",
+    "firebase_url": "https://whatup--life-foundation.firebaseio.com",
+    "project_id": "whatup--life-foundation",
+    "storage_bucket": "whatup--life-foundation.appspot.com"
+
+  },
+  "client": [
+    {
+      "client_info": {
+
+        "mobilesdk_app_id": "1:1079927007382:android:2b5f02e8ed797e813e3ab7",
+
+        "android_client_info": {
+          "package_name": "com.projectathena.wlf"
+        }
+      },
+      "oauth_client": [
+        {
+
+          "client_id": "1079927007382-iv5medvubktefgj6i8netgll74s5pqfv.apps.googleusercontent.com",
+
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+
+          "current_key": "AIzaSyATWS7cA8tb2HbELnDDXtWKPITOtOLy2l8"
+
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+
+              "client_id": "1079927007382-iv5medvubktefgj6i8netgll74s5pqfv.apps.googleusercontent.com",
+
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
