@@ -34,6 +34,15 @@ dependencies:
   cloud_firestore: ^0.13.7
   firebase_core: ^0.4.5
 
+  cached_network_image: ^2.2.0+1
+  flutter_html: ^1.0.0
+  firebase_auth: ^0.16.1
+  firebase_messaging: ^6.0.16
+
+
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
