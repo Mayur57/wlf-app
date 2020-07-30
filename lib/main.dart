@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
                 SizeConfig().initScaler(constraints, orientation);
                 return MaterialApp(
 //                  home: ErrorPage(),
-                  initialRoute: '/home',
+                  initialRoute: '/login',
                   onGenerateRoute: RouteGenerator.generateRoute,
                   debugShowCheckedModeBanner: false,
                 );

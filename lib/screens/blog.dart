@@ -5,36 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:wlf/screens/content.dart';
 import 'package:wlf/util/scaler.dart';
 import 'package:wlf/widgets/navbar.dart';
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BlogPage extends StatefulWidget {
+  const BlogPage({Key key}) : super(key: key);
+
   @override
   _BlogPageState createState() => _BlogPageState();
-
-
 }
-//class BlogCard{
-//  String title;
-//  String article;
-//
-//  BlogCard(this.title,this.article);
-//
-//// BlogCard.fromJSON(Map<String, dynamic> json){
-////   title = json["title"];
-////   article = json["article"];
-//// }
-//}
 
 class _BlogPageState extends State<BlogPage> {
   final _firestore = Firestore.instance;
   String title;
   String article;
-  var i=0;
-  var titles=[];
-  var articles=[];
-
+  var i = 0;
+  var titles = [];
+  var articles = [];
 
   bool fab = false;
   ScrollController _scrollController = new ScrollController();
@@ -49,32 +35,26 @@ class _BlogPageState extends State<BlogPage> {
         setState(() => fab = false);
       }
     });
-
   }
-   _getBlog() async {
-    final blogs = await _firestore.collection('blogs').getDocuments();
-setState(() {
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         actions: <Widget>[
           InkWell(
-            child:IconButton(icon: Icon(
-              Icons.notifications,
-              color: Colors.white,
-              size: 3.5 *SizeConfig.heightSizeMultiplier,
+            child: IconButton(
+              icon: Icon(
+                Icons.notifications,
+                color: Colors.white,
+                size: 3.5 * SizeConfig.heightSizeMultiplier,
+              ),
             ),
-          )
-
-              )
+          ),
         ],
         title: Text("Whatup' Life Foundation"),
         centerTitle: true,
-        backgroundColor: Colors.lightBlueAccent ,
+        backgroundColor: Colors.lightBlueAccent,
         elevation: 0,
       ),
       floatingActionButton: !fab
@@ -89,10 +69,6 @@ setState(() {
               },
             ),
       backgroundColor: Colors.lightBlueAccent,
-      bottomNavigationBar: SizedBox(
-        height: 75,
-        child: CustomNavbar(),
-      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance.collection("blogs").snapshots(),
         builder: (context, snapshot) {
@@ -106,15 +82,17 @@ setState(() {
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ContentPage(
-                                    _blog.data["title"],
-                                    _blog.data["article"],
-                                    _blog.data["author"])));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ContentPage(
+                              _blog.data["title"],
+                              _blog.data["article"],
+                              _blog.data["author"],
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
-                        // alignment: null,
                         height: 280,
                         child: Card(
                           color: Colors.white.withOpacity(0),
@@ -135,26 +113,26 @@ setState(() {
                                     color: Colors.transparent,
                                     image: DecorationImage(
                                       fit: BoxFit.fill,
-                                      image: CachedNetworkImageProvider(_blog.data["image_url"]),
+                                      image: CachedNetworkImageProvider(
+                                          _blog.data["image_url"]),
                                     )),
                               ),
                               Container(
                                 height: 280,
                                 padding: EdgeInsets.all(10.0),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    color: Colors.blue,
-                                    gradient: LinearGradient(
-                                        begin: FractionalOffset.topCenter,
-                                        end: FractionalOffset.bottomCenter,
-                                        colors: [
-                                          Colors.black.withOpacity(0.6),
-                                          Colors.black.withOpacity(0.6),
-                                        ],
-                                        stops: [
-                                          0.0,
-                                          1.0
-                                        ])),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: Colors.blue,
+                                  gradient: LinearGradient(
+                                    begin: FractionalOffset.topCenter,
+                                    end: FractionalOffset.bottomCenter,
+                                    colors: [
+                                      Colors.black.withOpacity(0.6),
+                                      Colors.black.withOpacity(0.6),
+                                    ],
+                                    stops: [0.0, 1.0],
+                                  ),
+                                ),
                               ),
                               Container(
                                 height: 280,
@@ -184,6 +162,5 @@ setState(() {
         },
       ),
     );
-
   }
-
+}

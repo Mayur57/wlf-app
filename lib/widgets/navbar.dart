@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wlf/screens/blog.dart';
+import 'package:wlf/screens/contactus.dart';
 
 class CustomNavbar extends StatefulWidget {
   @override
@@ -8,52 +10,55 @@ class CustomNavbar extends StatefulWidget {
 class _CustomNavbarState extends State<CustomNavbar> {
   int _currentIndex = 0;
 
+  final List<Widget> pages = [
+    BlogPage(
+      key: PageStorageKey('1'),
+    ),
+    ContactUs(
+      key: PageStorageKey('2'),
+    ),
+  ];
+
+  _changePage(_currentIndex){
+    switch (_currentIndex) {
+      case 0:
+      Navigator.pushReplacementNamed(context, '/blogs');
+      break;
+      case 1:
+        Navigator.pushReplacementNamed(context, '/contact');
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.white.withOpacity(0.5),
+      backgroundColor: Colors.white,
       currentIndex: _currentIndex,
-      iconSize: 36,
-      elevation: 40,
-      selectedFontSize: 12,
+      iconSize: 28,
+      selectedFontSize: 16,
+      selectedItemColor: Colors.blueAccent,
+      unselectedItemColor: Colors.black,
+      selectedLabelStyle: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
+      unselectedLabelStyle: TextStyle(),
       items: [
         BottomNavigationBarItem(
           icon: Icon(
             Icons.home,
-            color: Colors.white,
           ),
           title: Text(
             "Blogs",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.supervisor_account,
-            color: Colors.white,
           ),
           title: Text(
             "Contact us",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.account_circle,
-            color: Colors.white,
-          ),
-          title: Text(
-            "My Account",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
           ),
         ),
       ],
@@ -61,6 +66,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
         setState(() {
           _currentIndex = index;
           print(_currentIndex);
+          _changePage(_currentIndex);
         });
       },
     );

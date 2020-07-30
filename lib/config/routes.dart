@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wlf/screens/blog.dart';
 import 'package:wlf/screens/contactus.dart';
-
-import 'package:wlf/screens/content.dart';
-
+import 'package:wlf/util/pageSwitchingHandler.dart';
 import 'package:wlf/screens/error_page.dart';
 import 'package:wlf/screens/login.dart';
 
@@ -15,17 +13,16 @@ class RouteGenerator {
     final args = settings.arguments;
 
     switch(settings.name) {
-      case '/home':
-        return MaterialPageRoute(builder: (_) =>BlogPage() );
-
-//
-
-//        return MaterialPageRoute(builder: (_) => ContactUs());
-      //case '/signupInitial':
-      //  return MaterialPageRoute(builder: (_) => ThankyouPage());
-      //default:
-      //If invalid token is received redirect to page showing error 404
-       // return MaterialPageRoute(builder: (_) => ErrorPage());
+      case '/test':
+        return MaterialPageRoute(builder: (_) => BottomNavigationBarController() );
+      case '/blogs':
+        return MaterialPageRoute(builder: (_) => BlogPage() );
+      case '/login':
+        return MaterialPageRoute(builder: (_) => LoginPage() );
+      case '/contact':
+        return MaterialPageRoute(builder: (_) => ContactUs() );
+      default:
+        return MaterialPageRoute(builder: (_) => ErrorPage() );
     }
   }
 }

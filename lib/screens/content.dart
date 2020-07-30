@@ -48,12 +48,15 @@ class _ContentPageState extends State<ContentPage> {
               SizedBox(
                 height: 5 * SizeConfig.heightSizeMultiplier,
               ),
-              new Text(
-                "-"+widget.author,
-                style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.height * 0.025,
-                    fontStyle: FontStyle.italic),
-                textAlign: TextAlign.start,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: new Text(
+                  "-"+widget.author,
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.height * 0.025,
+                      fontStyle: FontStyle.italic),
+                  textAlign: TextAlign.start,
+                ),
               )
             ],
           ),

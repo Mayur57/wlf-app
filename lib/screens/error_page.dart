@@ -19,10 +19,10 @@ class ErrorPage extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              errorPagePageNotFound,
-              style: TextStyle(fontFamily: 'Circular Medium', fontSize: 30),
-            ),
+//            Text(
+//              errorPagePageNotFound,
+//              style: TextStyle(fontFamily: 'Circular Medium', fontSize: 30),
+//            ),
             SizedBox(
               height: 10,
             ),
@@ -33,14 +33,14 @@ class ErrorPage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Container(
-              width: 330,
-              child: Text(
-                errorPageUserErrorMessage,
-                style: TextStyle(fontFamily: 'Circular Medium', fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
-            ),
+//            Container(
+//              width: 330,
+//              child: Text(
+//                errorPageUserErrorMessage,
+//                style: TextStyle(fontFamily: 'Circular Medium', fontSize: 16),
+//                textAlign: TextAlign.center,
+//              ),
+//            ),
             SizedBox(
               height: 20,
             ),
