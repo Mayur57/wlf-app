@@ -22,6 +22,7 @@ dependencies:
   flutter_html: ^1.0.0
   firebase_auth: ^0.16.1
   firebase_messaging: ^6.0.16
+  expandable: ^4.1.4
 
 dev_dependencies:
   flutter_test:

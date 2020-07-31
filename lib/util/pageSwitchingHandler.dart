@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wlf/res/color.dart';
+import 'package:wlf/screens/settings.dart';
 import '../screens/blog.dart';
 import '../screens/contactus.dart';
 
@@ -17,6 +19,9 @@ class _BottomNavigationBarControllerState
     ContactUs(
       key: PageStorageKey('Page2'),
     ),
+    Settings(
+      key: PageStorageKey('Page3'),
+    ),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
@@ -26,19 +31,42 @@ class _BottomNavigationBarControllerState
   Widget _bottomNavigationBar(int selectedIndex) => BottomNavigationBar(
         onTap: (int index) => setState(() => _selectedIndex = index),
         currentIndex: selectedIndex,
-        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.shifting,
         iconSize: 28,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         selectedFontSize: 16,
-        selectedItemColor: Colors.blueAccent,
-        unselectedItemColor: Colors.black,
+        selectedItemColor: accent,
+        unselectedItemColor: Colors.white,
         selectedLabelStyle: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Blogs')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text('Contact Us')),
+            backgroundColor: mainColor,
+            icon: Icon(Icons.home),
+            title: Text(
+              'Blogs',
+              style: TextStyle(fontFamily: 'NHGTX'),
+            ),
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: wlfCoral,
+            icon: Icon(Icons.person),
+            title: Text(
+              'Contact Us',
+              style: TextStyle(fontFamily: 'NHGTX'),
+            ),
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: wlfGraphite,
+            icon: Icon(Icons.settings),
+            title: Text(
+              'Settings',
+              style: TextStyle(fontFamily: 'NHGTX'),
+            ),
+          ),
         ],
       );
 

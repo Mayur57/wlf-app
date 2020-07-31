@@ -45,7 +45,7 @@ class ErrorPage extends StatelessWidget {
               height: 20,
             ),
             FlatButton(
-              color: bg,
+//              color: bg,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100.0),
               ),
