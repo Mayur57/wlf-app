@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wlf/main.dart';
 import 'package:wlf/res/color.dart';
+import 'package:wlf/screens/notifications.dart';
 import 'package:wlf/screens/settings.dart';
 import '../screens/blog.dart';
 import '../screens/contactus.dart';
@@ -16,11 +18,14 @@ class _BottomNavigationBarControllerState
     BlogPage(
       key: PageStorageKey('Page1'),
     ),
-    ContactUs(
+    NotificationScreen(
       key: PageStorageKey('Page2'),
     ),
-    Settings(
+    ContactUs(
       key: PageStorageKey('Page3'),
+    ),
+    Settings(
+      key: PageStorageKey('Page4'),
     ),
   ];
 
@@ -31,9 +36,10 @@ class _BottomNavigationBarControllerState
   Widget _bottomNavigationBar(int selectedIndex) => BottomNavigationBar(
         onTap: (int index) => setState(() => _selectedIndex = index),
         currentIndex: selectedIndex,
-        type: BottomNavigationBarType.shifting,
         iconSize: 28,
+        type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
+        backgroundColor: mainColor,
         showUnselectedLabels: true,
         selectedFontSize: 16,
         selectedItemColor: accent,
@@ -44,7 +50,6 @@ class _BottomNavigationBarControllerState
         ),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            backgroundColor: mainColor,
             icon: Icon(Icons.home),
             title: Text(
               'Blogs',
@@ -52,7 +57,13 @@ class _BottomNavigationBarControllerState
             ),
           ),
           BottomNavigationBarItem(
-            backgroundColor: wlfCoral,
+            icon: Icon(Icons.notifications),
+            title: Text(
+              'Notifications',
+              style: TextStyle(fontFamily: 'NHGTX'),
+            ),
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             title: Text(
               'Contact Us',
@@ -60,7 +71,6 @@ class _BottomNavigationBarControllerState
             ),
           ),
           BottomNavigationBarItem(
-            backgroundColor: wlfGraphite,
             icon: Icon(Icons.settings),
             title: Text(
               'Settings',

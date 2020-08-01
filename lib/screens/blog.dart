@@ -43,36 +43,34 @@ class _BlogPageState extends State<BlogPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white70,
-      appBar: AppBar(
-        backgroundColor: mainColor,
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-            tooltip: "Logout",
-            icon: Icon(
-              Icons.power_settings_new,
-              color: Colors.white,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: IconButton(
-              tooltip: "Notifications",
-              icon: Icon(
-                Icons.notifications,
-                color: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(90.0),
+        child: AppBar(
+          backgroundColor: mainColor,
+          automaticallyImplyLeading: false,
+          flexibleSpace: SafeArea(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: <Widget>[
+                  SizedBox(width:16),
+                  Image.asset(
+                    loginPageLogoImageWhite,
+                    height: 60,
+                  ),
+                ],
               ),
             ),
           ),
-        ],
-        title: Text("Whatup' Life Foundation",
-            style: TextStyle(fontFamily: 'NHGTX')),
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance.collection("blogs").snapshots(),
         builder: (context, snapshot) {
           return !snapshot.hasData
-              ? Center(child: CircularProgressIndicator(),)
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
               : Stack(
                   children: <Widget>[
                     ListView.builder(
@@ -99,10 +97,10 @@ class _BlogPageState extends State<BlogPage> {
                               child: Card(
                                 elevation: 3,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                                margin: EdgeInsets.symmetric(
+                                    vertical: 8, horizontal: 10),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 child: Stack(
                                   children: <Widget>[
@@ -115,10 +113,8 @@ class _BlogPageState extends State<BlogPage> {
                                         color: Colors.transparent,
                                         image: DecorationImage(
                                           fit: BoxFit.fill,
-                                          image:
-                                              CachedNetworkImageProvider(
-                                                  _blog
-                                                      .data["image_url"]),
+                                          image: CachedNetworkImageProvider(
+                                              _blog.data["image_url"]),
                                         ),
                                       ),
                                     ),
@@ -130,10 +126,8 @@ class _BlogPageState extends State<BlogPage> {
                                             BorderRadius.circular(8.0),
                                         color: Colors.blue,
                                         gradient: LinearGradient(
-                                          begin:
-                                              FractionalOffset.topCenter,
-                                          end: FractionalOffset
-                                              .bottomCenter,
+                                          begin: FractionalOffset.topCenter,
+                                          end: FractionalOffset.bottomCenter,
                                           colors: [
                                             Colors.black.withOpacity(0.6),
                                             Colors.black.withOpacity(0.6),
@@ -145,8 +139,7 @@ class _BlogPageState extends State<BlogPage> {
                                     Container(
                                       height: 270,
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 20.0,
-                                          vertical: 12.0),
+                                          horizontal: 20.0, vertical: 12.0),
                                       alignment: Alignment.bottomCenter,
                                       child: Text(
                                         _blog.data["title"].length > 60
@@ -155,12 +148,11 @@ class _BlogPageState extends State<BlogPage> {
                                                 '...'
                                             : _blog.data["title"],
                                         style: TextStyle(
-                                          fontFamily: 'NHGTX',
-                                            fontSize:
-                                                MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.022,
+                                            fontFamily: 'NHGTX',
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.022,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white),
                                         textAlign: TextAlign.center,

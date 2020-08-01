@@ -5,6 +5,7 @@ import 'dart:math' as math;
 
 import 'package:wlf/res/color.dart';
 import 'package:wlf/res/strings.dart';
+import 'package:wlf/util/scaler.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key key}) : super(key: key);
@@ -18,98 +19,45 @@ class SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(90.0),
+        child: AppBar(
+          backgroundColor: mainColor,
+          automaticallyImplyLeading: false,
+          flexibleSpace: SafeArea(
+            child: Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(width: 16,),
+                    Text(
+                      'Settings',
+                      style: TextStyle(
+                          fontSize: 32,
+                          fontFamily: 'NHGTXM',
+                          color: Colors.white),
+                    ),
+                  ],
+                )),
+          ),
+        ),
+      ),
       body: ExpandableTheme(
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: <Widget>[
-            Container(
-              height: 200,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: wlfGraphite,
-                boxShadow: [
-                  BoxShadow(
-                    color: wlfGraphite.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Stack(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: Image.asset(
-                        loginPageLogoImageWhite,
-                        height: 60,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                      bottom: 16,
-                      left: 16,
-                      child: Text(
-                        "Settings",
-                        style: TextStyle(
-                            fontSize: 40,
-                            fontFamily: 'NHGTX',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ))
-                ],
-              ),
+            SizedBox(
+              height: 20,
             ),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                height: 70,
-                child: Card(
-                  color: Colors.green,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.brightness_6),
-                          Text(
-                            "Dark Mode",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ],
-                      ),
-                      Switch(
-                        value: true,
-                        onChanged: (toggleVar) {},
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            DarkModeToggle(),
+            CustomDivider(),
             AboutUs(),
+            CustomDivider(),
             Developers(),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                height: 70,
-                child: Card(
-                  color: Colors.green,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(Icons.brightness_6),
-                      Text(
-                        "Log out of the app",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            SizedBox(
+              height: 20,
             ),
+            LogoutButton(),
           ],
         ),
       ),
@@ -161,8 +109,8 @@ class Developers extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 70,
-                    color: Colors.indigoAccent,
+                    height: 60,
+                    color: mainColor,
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Row(
@@ -170,10 +118,13 @@ class Developers extends StatelessWidget {
                         children: [
                           Row(
                             children: <Widget>[
-                              Icon(Icons.code),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(Icons.code, color: Colors.white,),
+                              ),
                               Text(
-                                "Meet the Developers!",
-                                style: TextStyle(fontSize: 20),
+                                "The Developers",
+                                style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'NHGTXM'),
                               ),
                             ],
                           ),
@@ -247,8 +198,8 @@ class AboutUs extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 70,
-                    color: Colors.indigoAccent,
+                    height: 60,
+                    color:mainColor,
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Row(
@@ -256,10 +207,13 @@ class AboutUs extends StatelessWidget {
                         children: [
                           Row(
                             children: <Widget>[
-                              Icon(Icons.code),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(Icons.insert_emoticon, color: Colors.white,),
+                              ),
                               Text(
                                 "About Us",
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'NHGTXM'),
                               ),
                             ],
                           ),
@@ -287,4 +241,89 @@ class AboutUs extends StatelessWidget {
       ),
     );
   }
+}
+
+class CustomDivider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 50.0),
+      child: Divider(
+        height: 1,
+      ),
+    );
+  }
+}
+
+class LogoutButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: ButtonTheme(
+        height: 5.2 * SizeConfig.heightSizeMultiplier,
+        child: FlatButton(
+          onPressed: () {},
+          color: Colors.redAccent,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+          child: Text(
+            'Logout',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'NHGTXM',
+              fontSize: 17,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DarkModeToggle extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return DarkModeToggleState();
+  }
+}
+
+class DarkModeToggleState extends State<DarkModeToggle>{
+  @override
+  Widget build(BuildContext context) {
+    return             Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        height: 70,
+        child: Card(
+          color: mainColor,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.brightness_6, color: Colors.white,),
+                    ),
+                    Text(
+                      "Dark Mode",
+                      style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'NHGTXM'),
+                    ),
+                  ],
+                ),
+                Switch(
+                  value: true,
+                  onChanged: (toggleVar) {},
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
 }

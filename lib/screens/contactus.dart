@@ -19,67 +19,49 @@ class ContactUs extends StatefulWidget {
 class _ContactUsState extends State<ContactUs> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _name = TextEditingController();
-  TextEditingController _subject = TextEditingController();
   TextEditingController _message = TextEditingController();
 
   String username = '';
-  String userSubject = '';
   String userMessage = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            //Header
-            Container(
-              height: 200,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: wlfCoral,
-                boxShadow: [
-                  BoxShadow(
-                    color: wlfCoral.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: SafeArea(
-                child: Stack(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(90.0),
+        child: AppBar(
+          backgroundColor: mainColor,
+          automaticallyImplyLeading: false,
+          flexibleSpace: SafeArea(
+            child: Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Image.asset(
-                          loginPageLogoImageWhite,
-                          height: 60,
-                        ),
-                      ),
+                    SizedBox(width: 16,),
+                    Text(
+                      'Contact Us',
+                      style: TextStyle(
+                          fontSize: 32,
+                          fontFamily: 'NHGTXM',
+                          color: Colors.white),
                     ),
-                    Positioned(
-                        bottom: 16,
-                        left: 16,
-                        child: Text(
-                          "Contact Us",
-                          style: TextStyle(
-                              fontSize: 40,
-                              fontFamily: 'NHGTX',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ))
                   ],
-                ),
+                )),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              //Header
+              SizedBox(
+                height: 20,
               ),
-            ),
-            Container(
+              Container(
                 width: 84.37 * SizeConfig.widthSizeMultiplier,
                 child: Text(
                   lipsum,
@@ -88,12 +70,13 @@ class _ContactUsState extends State<ContactUs> {
                     fontFamily: 'NHGTX',
                     fontSize: 15,
                   ),
-                )),
-            //The form
-            Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: Container(
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              //The form
+              Container(
                 width: 84.37 * SizeConfig.widthSizeMultiplier,
                 child: Form(
                   key: _formKey,
@@ -103,10 +86,9 @@ class _ContactUsState extends State<ContactUs> {
                       TextFormField(
                         maxLength: 64,
                         controller: _name,
-                        validator: (value) {
-                          //TODO: Validate the name, throw error if empty
-                          return '';
-                        },
+                        validator: (value) => value.length == 0
+                            ? 'Please enter your full name'
+                            : null,
                         keyboardType: TextInputType.emailAddress,
                         obscureText: false,
                         style: TextStyle(
@@ -133,9 +115,8 @@ class _ContactUsState extends State<ContactUs> {
                         onChanged: (value) {
                           setState(() => userMessage = value);
                         },
-                        validator: (value) => value.length == 0
-                            ? 'Please enter a message'
-                            : null,
+                        validator: (value) =>
+                            value.length == 0 ? 'Please enter a message' : null,
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(
                             color: Colors.black, fontFamily: NHregular),
@@ -159,8 +140,7 @@ class _ContactUsState extends State<ContactUs> {
                           child: FlatButton(
                             onPressed: () {
                               if (_formKey.currentState.validate()) {
-                                Navigator.of(context)
-                                    .pushReplacementNamed('/test');
+                                //send post request to server/send an email
                               }
                             },
                             color: Colors.blueAccent,
@@ -170,7 +150,7 @@ class _ContactUsState extends State<ContactUs> {
                               'Submit',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontFamily: NHregular,
+                                fontFamily: 'NHGTXM',
                                 fontSize: 17,
                               ),
                             ),
@@ -181,31 +161,8 @@ class _ContactUsState extends State<ContactUs> {
                   ),
                 ),
               ),
-            ),
-            //Bottom Sheet for Devs Queries
-            Container(
-              height: 45,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Color(0xFFFD7C6F),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFFFD7C6F).withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 7,
-                    offset: Offset(0, -3), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Text(
-                  "For app related queries or bug reports, click here",
-                  style: TextStyle(
-                      fontSize: 14, fontFamily: 'NHGTX', color: Colors.white),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
