@@ -2,9 +2,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-
 import 'package:wlf/res/color.dart';
-import 'package:wlf/res/strings.dart';
 import 'package:wlf/util/scaler.dart';
 
 class Settings extends StatefulWidget {
@@ -29,7 +27,9 @@ class SettingsState extends State<Settings> {
                 alignment: Alignment.centerLeft,
                 child: Row(
                   children: <Widget>[
-                    SizedBox(width: 16,),
+                    SizedBox(
+                      width: 16,
+                    ),
                     Text(
                       'Settings',
                       style: TextStyle(
@@ -120,11 +120,17 @@ class Developers extends StatelessWidget {
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Icon(Icons.code, color: Colors.white,),
+                                child: Icon(
+                                  Icons.code,
+                                  color: Colors.white,
+                                ),
                               ),
                               Text(
                                 "The Developers",
-                                style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'NHGTXM'),
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontFamily: 'NHGTXM'),
                               ),
                             ],
                           ),
@@ -199,7 +205,7 @@ class AboutUs extends StatelessWidget {
                   ),
                   header: Container(
                     height: 60,
-                    color:mainColor,
+                    color: mainColor,
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Row(
@@ -209,11 +215,17 @@ class AboutUs extends StatelessWidget {
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Icon(Icons.insert_emoticon, color: Colors.white,),
+                                child: Icon(
+                                  Icons.insert_emoticon,
+                                  color: Colors.white,
+                                ),
                               ),
                               Text(
                                 "About Us",
-                                style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'NHGTXM'),
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontFamily: 'NHGTXM'),
                               ),
                             ],
                           ),
@@ -281,17 +293,28 @@ class LogoutButton extends StatelessWidget {
   }
 }
 
-class DarkModeToggle extends StatefulWidget{
+class DarkModeToggle extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return DarkModeToggleState();
   }
 }
 
-class DarkModeToggleState extends State<DarkModeToggle>{
+class DarkModeToggleState extends State<DarkModeToggle> {
+  bool isDark = true;
+  
+  _toggleTheme() {
+    if(!isDark){
+      print("Dark theme disabled");
+    }
+    else{
+      print("Dark theme enabled");
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
-    return             Padding(
+    return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
         height: 70,
@@ -306,17 +329,29 @@ class DarkModeToggleState extends State<DarkModeToggle>{
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.brightness_6, color: Colors.white,),
+                      child: Icon(
+                        Icons.brightness_6,
+                        color: Colors.white,
+                      ),
                     ),
                     Text(
                       "Dark Mode",
-                      style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'NHGTXM'),
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'NHGTXM'),
                     ),
                   ],
                 ),
                 Switch(
-                  value: true,
-                  onChanged: (toggleVar) {},
+                  activeColor: Colors.white,
+                  value: isDark,
+                  onChanged: (bool s) {
+                    setState(() {
+                      isDark = s;
+                      _toggleTheme();
+                    });
+                  },
                 ),
               ],
             ),
@@ -325,5 +360,4 @@ class DarkModeToggleState extends State<DarkModeToggle>{
       ),
     );
   }
-
 }

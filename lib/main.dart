@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
               builder: (context, orientation){
                 SizeConfig().initScaler(constraints, orientation);
                 return MaterialApp(
-//                  home: ErrorPage(),
+                //home: ErrorPage(),
                   initialRoute: '/test',
                   onGenerateRoute: RouteGenerator.generateRoute,
                   debugShowCheckedModeBanner: false,
