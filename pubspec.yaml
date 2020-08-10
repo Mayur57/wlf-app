@@ -25,7 +25,14 @@ dependencies:
   expandable: ^4.1.4
   provider: ^2.0.1
   shared_preferences: ^0.4.2
+
+  get_it: ^4.0.4
+  mailer: ^3.0.4
+  fluttertoast: ^7.0.2
+
+
   webview_flutter: ^0.3.22+1
+
 
 dev_dependencies:
   flutter_test:

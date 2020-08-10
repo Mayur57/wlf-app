@@ -15,14 +15,12 @@ class RouteGenerator {
     switch(settings.name) {
       case '/test':
         return MaterialPageRoute(builder: (_) => BottomNavigationBarController() );
-      case '/blogs':
-        return MaterialPageRoute(builder: (_) => BlogPage() );
       case '/login':
         return MaterialPageRoute(builder: (_) => LoginPage() );
       case '/contact':
         return MaterialPageRoute(builder: (_) => ContactUs() );
       default:
-        return MaterialPageRoute(builder: (_) => ErrorPage() );
+        return MaterialPageRoute(builder: (_) => BottomNavigationBarController() );
     }
   }
 }
