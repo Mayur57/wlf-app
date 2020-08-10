@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wlf/util/scaler.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class ContentPage extends StatefulWidget {
   final String title;
@@ -14,6 +16,7 @@ class ContentPage extends StatefulWidget {
 }
 
 class _ContentPageState extends State<ContentPage> {
+  Completer<WebViewController> _controller = Completer<WebViewController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,42 +27,13 @@ class _ContentPageState extends State<ContentPage> {
         elevation: 0,
       ),
       backgroundColor: Colors.lightBlueAccent,
-      body: Container(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(10.0),
-          child: new Column(
-            children: <Widget>[
-              SizedBox(height: 5 * SizeConfig.heightSizeMultiplier),
-              new Text(
-                widget.title,
-                style: TextStyle(fontSize: 30.0, fontStyle: FontStyle.normal),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 5 * SizeConfig.heightSizeMultiplier,
-              ),
-              new Text(
-                widget.content,
-                style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.height * 0.025,
-                    fontStyle: FontStyle.italic),
-                textAlign: TextAlign.justify,
-              ),
-              SizedBox(
-                height: 5 * SizeConfig.heightSizeMultiplier,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: new Text(
-                  "-"+widget.author,
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * 0.025,
-                      fontStyle: FontStyle.italic),
-                  textAlign: TextAlign.start,
-                ),
-              )
-            ],
-          ),
+      body: Center(
+        child: WebView(
+          initialUrl: 'https://en.wikipedia.org/wiki/Cristiano_Ronaldo',
+          // 'https://www.whatuplifefoundation.com/post/productivity-in-lockdown',
+          onWebViewCreated: (WebViewController webViewController) {
+            _controller.complete(webViewController);
+          },
         ),
       ),
     );

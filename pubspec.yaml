@@ -25,6 +25,7 @@ dependencies:
   expandable: ^4.1.4
   provider: ^2.0.1
   shared_preferences: ^0.4.2
+  webview_flutter: ^0.3.22+1
 
 dev_dependencies:
   flutter_test:
