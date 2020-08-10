@@ -1,12 +1,13 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get_it/get_it.dart';
 import 'package:wlf/res/color.dart';
 import 'package:wlf/res/strings.dart';
-import '../main.dart';
+import 'package:wlf/util/mail.dart';
 import '../util/scaler.dart';
 
 class ContactUs extends StatefulWidget {
@@ -18,6 +19,7 @@ class ContactUs extends StatefulWidget {
 
 class _ContactUsState extends State<ContactUs> {
   final _formKey = GlobalKey<FormState>();
+  SendMail _sendMail = GetIt.I.get<SendMail>();
   TextEditingController _name = TextEditingController();
   TextEditingController _message = TextEditingController();
 
@@ -30,20 +32,21 @@ class _ContactUsState extends State<ContactUs> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(90.0),
         child: AppBar(
-          backgroundColor: mainColor,
+          elevation: 0.0,
+          backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           flexibleSpace: SafeArea(
             child: Align(
                 alignment: Alignment.centerLeft,
                 child: Row(
                   children: <Widget>[
-                    SizedBox(width: 16,),
+                    SizedBox(width: 16),
                     Text(
                       'Contact Us',
                       style: TextStyle(
-                          fontSize: 32,
+                          fontSize: 40,
                           fontFamily: 'NHGTXM',
-                          color: Colors.white),
+                          color: mainColor),
                     ),
                   ],
                 )),
@@ -57,9 +60,10 @@ class _ContactUsState extends State<ContactUs> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              CustomDivider(),
               //Header
               SizedBox(
-                height: 20,
+                height: 60,
               ),
               Container(
                 width: 84.37 * SizeConfig.widthSizeMultiplier,
@@ -68,12 +72,12 @@ class _ContactUsState extends State<ContactUs> {
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontFamily: 'NHGTX',
-                    fontSize: 15,
+                    fontSize: 17,
                   ),
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 60,
               ),
               //The form
               Container(
@@ -106,7 +110,7 @@ class _ContactUsState extends State<ContactUs> {
                         },
                       ),
                       SizedBox(
-                        height: 1 * SizeConfig.heightSizeMultiplier,
+                        height: 3 * SizeConfig.heightSizeMultiplier,
                       ),
                       TextFormField(
                         maxLength: 512,
@@ -130,7 +134,7 @@ class _ContactUsState extends State<ContactUs> {
                         ),
                       ),
                       SizedBox(
-                        height: 1 * SizeConfig.heightSizeMultiplier,
+                        height: 5 * SizeConfig.heightSizeMultiplier,
                       ),
                       Align(
                         alignment: Alignment.center,
@@ -141,6 +145,20 @@ class _ContactUsState extends State<ContactUs> {
                             onPressed: () {
                               if (_formKey.currentState.validate()) {
                                 //send post request to server/send an email
+                                setState(() {
+                                  _name.text= "";
+                                  _message.text= "";
+                                });
+                                _sendMail.mail(username,userMessage);
+                                Fluttertoast.showToast(
+                                    msg: "Thank you for writing to us! \nWe'll get back to you in 48-72 hours",
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.CENTER,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.blue,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                );
                               }
                             },
                             color: Colors.blueAccent,
@@ -164,6 +182,20 @@ class _ContactUsState extends State<ContactUs> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CustomDivider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Divider(
+        color: mainColor,
+        height: 1,
+        thickness: 1,
       ),
     );
   }

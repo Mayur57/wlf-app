@@ -3,7 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wlf/res/strings.dart';
+import 'package:wlf/util/authentication.dart';
 import '../util/scaler.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,9 +17,11 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  Services _services = GetIt.I.get<Services>();
   String userEmail = '';
   String userPassword = '';
   String userConfirmPassword = '';
+  String result;
 
   final TextEditingController _email = TextEditingController();
   final TextEditingController _pass = TextEditingController();
@@ -93,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                             if (value.isEmpty) {
                               return 'Enter an email';
                             } else if ((!value.contains('@')) ||
-                                (!value.contains('.'))) {
+                                (!value.contains('.com'))) {
                               return 'Enter a valid email';
                             }
                             return null;
@@ -140,22 +146,6 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(
                           height: 1 * SizeConfig.heightSizeMultiplier,
                         ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Forgot Password',
-                                  style: TextStyle(
-                                    color: Colors.redAccent,
-                                    fontFamily: NHregular,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
                         SizedBox(
                           height: 2.5 * SizeConfig.heightSizeMultiplier,
                         ),
@@ -165,9 +155,13 @@ class _LoginPageState extends State<LoginPage> {
                             minWidth: 84.37 * SizeConfig.widthSizeMultiplier,
                             height: 5.2 * SizeConfig.heightSizeMultiplier,
                             child: FlatButton(
-                              onPressed: () {
+                              onPressed: ()  {
                                 if (_formKey.currentState.validate()) {
-                                  Navigator.of(context).pushReplacementNamed('/test');
+                                  setState((){
+                                    _email.text="";
+                                    _pass.text="";
+                                  });
+                                  _login();
                                 }
                               },
                               color: Colors.blueAccent,
@@ -193,6 +187,53 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       ),
+    );
+  }
+  _login() async{
+    final result =  await _services.signIn(userEmail, userPassword);
+    if(!result.contains("ERROR :")){
+      Fluttertoast.showToast(
+          msg: "You are ",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.blue,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+     prefs.setString('email', userEmail);
+      Navigator.of(context).pushReplacementNamed('/test');
+    }else{
+       _showMyDialog(result);
+    }
+
+  }
+
+  Future<Widget> _showMyDialog(String message) async {
+    return showDialog<Widget>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(message.substring(8)),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Retry'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
