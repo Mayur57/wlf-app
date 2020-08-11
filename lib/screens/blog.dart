@@ -43,7 +43,8 @@ class _BlogPageState extends State<BlogPage> {
   void myScroll() async {
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.reverse && _scrollController.position.pixels > 100 ) {
+              ScrollDirection.reverse &&
+          _scrollController.position.pixels > 100) {
         if (!isScrollingDown) {
           isScrollingDown = true;
           _visible = false;
@@ -62,7 +63,7 @@ class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: fab ? floatingActionButton(): null,
+      floatingActionButton: fab ? floatingActionButton() : null,
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: MyAppBar(_visible),
@@ -71,114 +72,113 @@ class _BlogPageState extends State<BlogPage> {
         builder: (context, snapshot) {
           return !snapshot.hasData
               ? Center(
-            child: CircularProgressIndicator(),
-          )
+                  child: CircularProgressIndicator(),
+                )
               : Stack(
-            children: <Widget>[
-              ListView.builder(
-                  padding: EdgeInsets.only(bottom: 65.0 , top: 102),
-                  controller: _scrollController,
-                  itemCount: snapshot.data.documents.length,
-                  itemBuilder: (context, index) {
-                    DocumentSnapshot _blog =
-                    snapshot.data.documents[index];
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ContentPage(
-                              _blog.data["title"],
-                              _blog.data["article"],
-                              _blog.data["author"],
+                  children: <Widget>[
+                    ListView.builder(
+                        padding: EdgeInsets.only(bottom: 65.0, top: 102),
+                        controller: _scrollController,
+                        itemCount: snapshot.data.documents.length,
+                        itemBuilder: (context, index) {
+                          DocumentSnapshot _blog =
+                              snapshot.data.documents[index];
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ContentPage(
+                                    _blog.data["url"],
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              height: 400,
+                              child: Card(
+                                //shadowColor: Colors.blue,
+                                elevation: 8,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                margin: EdgeInsets.symmetric(
+                                    vertical: 8, horizontal: 10),
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                child: Stack(
+                                  children: <Widget>[
+                                    Container(
+                                      height: 400.0,
+                                      //margin: EdgeInsets.all(2.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        color: Colors.transparent,
+                                        image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: CachedNetworkImageProvider(
+                                              _blog.data["image_url"]),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 390,
+                                      padding: EdgeInsets.all(10.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        color: Colors.blue,
+                                        gradient: LinearGradient(
+                                          begin: FractionalOffset.topCenter,
+                                          end: FractionalOffset.bottomCenter,
+                                          colors: [
+                                            Colors.black.withOpacity(0.27),
+                                            Colors.black.withOpacity(0.27),
+                                          ],
+                                          stops: [0.0, 1.0],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 380,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.0, vertical: 12.0),
+                                      alignment: Alignment.bottomCenter,
+                                      child: Text(
+                                        _blog.data["title"].length > 60
+                                            ? _blog.data["title"]
+                                                    .substring(0, 60) +
+                                                '...'
+                                            : _blog.data["title"],
+                                        style: TextStyle(
+                                            fontFamily: 'NHGTX',
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.025,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        height: 400,
-                        child: Card(
-                          //shadowColor: Colors.blue,
-                          elevation: 8,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          margin: EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 10),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Stack(
-                            children: <Widget>[
-                              Container(
-                                height: 400.0,
-                                //margin: EdgeInsets.all(2.0),
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(8.0),
-                                  color: Colors.transparent,
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: CachedNetworkImageProvider(
-                                        _blog.data["image_url"]),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height: 390,
-                                padding: EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(8.0),
-                                  color: Colors.blue,
-                                  gradient: LinearGradient(
-                                    begin: FractionalOffset.topCenter,
-                                    end: FractionalOffset.bottomCenter,
-                                    colors: [
-                                      Colors.black.withOpacity(0.27),
-                                      Colors.black.withOpacity(0.27),
-                                    ],
-                                    stops: [0.0, 1.0],
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height: 380,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 20.0, vertical: 12.0),
-                                alignment: Alignment.bottomCenter,
-                                child: Text(
-                                  _blog.data["title"].length > 60
-                                      ? _blog.data["title"]
-                                      .substring(0, 60) +
-                                      '...'
-                                      : _blog.data["title"],
-                                  style: TextStyle(
-                                      fontFamily: 'NHGTX',
-                                      fontSize: MediaQuery.of(context)
-                                          .size
-                                          .height *
-                                          0.025,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-            ],
-          );
+                          );
+                        }),
+                  ],
+                );
         },
       ),
     );
   }
+
   floatingActionButton() {
     return FloatingActionButton(
       child: Icon(Icons.arrow_upward),
       foregroundColor: Colors.white,
-      backgroundColor: Colors.blue ,
+      backgroundColor: Colors.blue,
       onPressed: () {
         _scrollController.animateTo(0,
             duration: new Duration(seconds: 1), curve: Curves.ease);
