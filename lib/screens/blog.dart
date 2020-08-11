@@ -58,7 +58,6 @@ class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: fab ? floatingActionButton() : null,
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: MyAppBar(_visible),

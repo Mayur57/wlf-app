@@ -7,7 +7,7 @@ import 'package:wlf/util/scaler.dart';
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   bool _visible;
   MyAppBar(this._visible );
-  num height = 75.0;
+  num height = 90.0;
   @override
   _MyAppBarState createState() => _MyAppBarState();
 
@@ -43,15 +43,11 @@ class _MyAppBarState extends State<MyAppBar> {
                           //loginPageLogoImageBlue,
                             height: 65,
                           ),
-
-
                       ],
                     ),
                   ),
                 ),
               ),
-
-
       ),
     );
   }
