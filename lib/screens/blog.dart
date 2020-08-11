@@ -24,14 +24,7 @@ class _BlogPageState extends State<BlogPage> {
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels > 500) {
-        setState(() => fab = true);
-      } else {
-        setState(() => fab = false);
-      }
-    });
-    myScroll();
+//    myScroll();
   }
 
   @override
@@ -40,25 +33,27 @@ class _BlogPageState extends State<BlogPage> {
     super.dispose();
   }
 
-  void myScroll() async {
-    _scrollController.addListener(() {
-      if (_scrollController.position.userScrollDirection ==
-              ScrollDirection.reverse &&
-          _scrollController.position.pixels > 100) {
-        if (!isScrollingDown) {
-          isScrollingDown = true;
-          _visible = false;
-        }
-      }
-      if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.forward) {
-        if (isScrollingDown) {
-          isScrollingDown = false;
-          _visible = true;
-        }
-      }
-    });
-  }
+  ///Removed scroll analysis and jump to top FAB
+  ///in favour of performance and smooth scrolling - Mayur
+//  void myScroll() async {
+//    _scrollController.addListener(() {
+//      if (_scrollController.position.userScrollDirection ==
+//              ScrollDirection.reverse &&
+//          _scrollController.position.pixels > 100) {
+//        if (!isScrollingDown) {
+//          isScrollingDown = true;
+//          _visible = false;
+//        }
+//      }
+//      if (_scrollController.position.userScrollDirection ==
+//          ScrollDirection.forward) {
+//        if (isScrollingDown) {
+//          isScrollingDown = false;
+//          _visible = true;
+//        }
+//      }
+//    });
+//  }
 
   @override
   Widget build(BuildContext context) {

@@ -29,6 +29,7 @@ class PersonalNotifications extends StatelessWidget {
             : Stack(
                 children: <Widget>[
                   ListView.builder(
+                    physics: BouncingScrollPhysics(),
                       padding: EdgeInsets.only(bottom: 65.0, top: 16.0),
                       shrinkWrap: true,
                       controller: _scrollController,

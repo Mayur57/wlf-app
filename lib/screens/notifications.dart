@@ -41,6 +41,7 @@ class _NotificationScreenState extends State<NotificationScreen>
     return new Scaffold(
       backgroundColor: Colors.white,
       body: new NestedScrollView(
+        physics: BouncingScrollPhysics(),
         controller: _scrollViewController,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
