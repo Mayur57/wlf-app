@@ -72,7 +72,7 @@ class _NotificationScreenState extends State<NotificationScreen>
                   ],
                   controller: _tabController,
                   labelColor: mainColor,
-                  unselectedLabelColor: Colors.blue,
+                  unselectedLabelColor: Colors.grey,
                   indicatorColor: mainColor,
                 ),
               ),

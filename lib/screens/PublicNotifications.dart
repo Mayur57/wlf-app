@@ -32,8 +32,8 @@ class PublicNotifications extends StatelessWidget {
                             snapshot.data.documents[index];
                         return Container(
                           margin:
-                              EdgeInsets.symmetric(vertical: 8, horizontal: 9),
-                          height: 170,
+                              EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                          height: 150,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(16.0),
                             child: Container(
@@ -41,52 +41,40 @@ class PublicNotifications extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: mainColor.withOpacity(0.5),
                               ),
-                              child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 13.0, vertical: 8.0),
                                 child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    SizedBox(
-                                      height: 10.0,
-                                    ),
-                                    Row(
-                                      children: <Widget>[
-                                        SizedBox(
-                                          width: 12,
-                                        ),
-                                        Text(
-                                          _notifications.data["title"],
-                                          style: TextStyle(
-                                              fontSize: 35,
-                                              fontFamily: 'NHGTXM',
-                                              color: Colors.white),
-                                        ),
-                                      ],
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        _notifications.data["title"],
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            fontFamily: 'NHGTXM',
+                                            color: Colors.white),
+                                      ),
                                     ),
                                     SizedBox(
                                       height: 10.0,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        SizedBox(width: 15),
-                                        Flexible(
-                                          child: Text(
-                                            _notifications.data["details"],
-                                            style: _notifications
-                                                        .data["details"]
-                                                        .length >
-                                                    125
-                                                ? TextStyle(
-                                                    fontSize: 16,
-                                                    fontFamily: 'NHGTXM',
-                                                    color: Colors.white)
-                                                : TextStyle(
-                                                    fontSize: 20,
-                                                    fontFamily: 'NHGTXM',
-                                                    color: Colors.white),
-                                          ),
-                                        ),
-                                      ],
+                                    Flexible(
+                                      child: Text(
+                                        _notifications.data["details"],
+                                        style: _notifications
+                                                    .data["details"]
+                                                    .length >
+                                                125
+                                            ? TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: 'NHGTX',
+                                                color: Colors.white)
+                                            : TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: 'NHGTX',
+                                                color: Colors.white),
+                                      ),
                                     ),
                                   ],
                                 ),
