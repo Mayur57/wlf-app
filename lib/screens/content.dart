@@ -1,4 +1,5 @@
 import 'dart:async';
+// import 'dart:html';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class ContentPage extends StatefulWidget {
 }
 
 class _ContentPageState extends State<ContentPage> {
+  WebViewController _myController;
   Completer<WebViewController> _controller = Completer<WebViewController>();
   @override
   Widget build(BuildContext context) {
@@ -26,14 +28,38 @@ class _ContentPageState extends State<ContentPage> {
         backgroundColor: Colors.lightBlueAccent,
         elevation: 0,
       ),
-      backgroundColor: Colors.lightBlueAccent,
-      body: Center(
-        child: WebView(
-          initialUrl: 'https://en.wikipedia.org/wiki/Cristiano_Ronaldo',
-          // 'https://www.whatuplifefoundation.com/post/productivity-in-lockdown',
-          onWebViewCreated: (WebViewController webViewController) {
-            _controller.complete(webViewController);
-          },
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          child: WebView(
+              initialUrl:
+                  'https://www.whatuplifefoundation.com/post/what-s-on-your-mind',
+              javascriptMode: JavascriptMode.unrestricted,
+              onWebViewCreated: (WebViewController webViewController) {
+                _controller.complete(webViewController);
+                _myController = webViewController;
+              },
+              onPageFinished: (String url) {
+                print('Page finished loading: $url');
+                _myController.evaluateJavascript(
+                  "document.getElementsByTagName('header')[0].style.display='none';",
+                );
+                _myController.evaluateJavascript(
+                  "document.querySelectorAll('._26v3s')[1].style.display='none';document.querySelectorAll('.blog-post-title-font')[0].style.fontSize='30px';",
+                );
+                _myController.evaluateJavascript(
+                  "let x=document.getElementsByTagName('p').length;for(let i=0;i<x;i++){document.getElementsByTagName('p')[i].style.fontSize='16px';}",
+                );
+                _myController.evaluateJavascript(
+                    "document.getElementsByClassName('_26v3s ')[2].style.display='none';");
+                _myController.evaluateJavascript(
+                    "document.getElementsByClassName('_1nBO7')[0].style.display='none';");
+                _myController.evaluateJavascript(
+                    "document.getElementById('SITE_FOOTERinlineContent').style.display='none';");
+              }),
         ),
       ),
     );
