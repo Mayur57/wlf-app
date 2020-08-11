@@ -53,7 +53,7 @@ class _BlogPageState extends State<BlogPage> {
               alignment: Alignment.centerLeft,
               child: Row(
                 children: <Widget>[
-                  SizedBox(width:16),
+                  SizedBox(width: 16),
                   Image.asset(
                     loginPageLogoImageWhite,
                     height: 60,
@@ -85,9 +85,7 @@ class _BlogPageState extends State<BlogPage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ContentPage(
-                                    _blog.data["title"],
-                                    _blog.data["article"],
-                                    _blog.data["author"],
+                                    _blog.data["url"],
                                   ),
                                 ),
                               );
