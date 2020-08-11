@@ -4,6 +4,9 @@ import 'package:wlf/main.dart';
 import 'package:wlf/res/color.dart';
 import 'package:wlf/screens/notifications.dart';
 import 'package:wlf/screens/settings.dart';
+import '../res/color.dart';
+import '../res/color.dart';
+import '../res/color.dart';
 import '../screens/blog.dart';
 import '../screens/contactus.dart';
 
@@ -109,7 +112,7 @@ class _BottomNavigationBarControllerState
         ),
         child: Opacity(
           //you can change the opacity to whatever suits you best
-          opacity: 0.5,
+          opacity: 0.7,
           child: BottomNavigationBar(
             onTap: (int index) => setState(() => _selectedIndex = index),
             currentIndex: selectedIndex,
@@ -119,8 +122,8 @@ class _BottomNavigationBarControllerState
             backgroundColor: Colors.white,
             showUnselectedLabels: true,
             selectedFontSize: 16,
-            selectedItemColor: Colors.blue,
-            unselectedItemColor: Colors.lightBlueAccent,
+            selectedItemColor: wlfCoral,
+            unselectedItemColor: mainColor,
             selectedLabelStyle: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
