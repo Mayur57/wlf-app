@@ -30,7 +30,6 @@ Color bg = Color(0xffF8BC4E);
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    precacheImage(AssetImage("assets/images/WUF_logo-blue-01.png"), context);
     return LayoutBuilder(
         builder: (context, constraints){
           return OrientationBuilder(

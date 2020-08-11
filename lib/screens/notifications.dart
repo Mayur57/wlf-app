@@ -28,14 +28,6 @@ class _NotificationScreenState extends State<NotificationScreen>
     _tabController = new TabController(vsync: this, length: 2);
     //UserId();
   }
-  /*
-  Future<void> UserId() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    user_id = prefs.getString('user_uid');
-    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    print(user_id);
-  }
-  */
 
   @override
   void dispose() {
@@ -53,12 +45,12 @@ class _NotificationScreenState extends State<NotificationScreen>
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverPadding(
-              padding: EdgeInsets.only(top: 11.0),
+              padding: EdgeInsets.only(top: 16.0),
               sliver: new SliverAppBar(
                 title: new Text(
                   'Notifications',
                   style: TextStyle(
-                      fontSize: 40, fontFamily: 'NHGTXM', color: mainColor),
+                      fontSize: 32, fontFamily: 'NHGTXM', color: mainColor),
                 ),
                 backgroundColor: Colors.white,
                 automaticallyImplyLeading: false,

@@ -77,6 +77,7 @@ class _BlogPageState extends State<BlogPage> {
               : Stack(
                   children: <Widget>[
                     ListView.builder(
+                      physics: BouncingScrollPhysics(),
                         padding: EdgeInsets.only(bottom: 65.0, top: 102),
                         controller: _scrollController,
                         itemCount: snapshot.data.documents.length,
