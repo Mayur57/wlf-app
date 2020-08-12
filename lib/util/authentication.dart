@@ -64,7 +64,7 @@ class Services {
               "ERROR: Signing in with these set of credentials is not enabled or allowed. Please contact the administrator.";
           break;
         default:
-          status = "ERROR: An unknown error has occurred. Please try again.";
+          status = "ERROR: An unknown error has occurred. Please check your internet connection and try again.";
       }
     }
     return status;
