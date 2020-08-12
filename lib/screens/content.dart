@@ -1,10 +1,8 @@
 import 'dart:async';
-// import 'dart:html';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wlf/res/color.dart';
-import 'package:wlf/util/scaler.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
@@ -33,7 +31,7 @@ class _ContentPageState extends State<ContentPage> {
     return Scaffold(
       appBar: AppBar(
         title:
-            Text("Whatup' Life Foundation", style: TextStyle(color: mainColor)),
+        Text("Whatup' Life Foundation", style: TextStyle(color: mainColor)),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,

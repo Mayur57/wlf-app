@@ -81,7 +81,7 @@ class _NotificationScreenState extends State<NotificationScreen>
         },
         body: new TabBarView(
           children: <Widget>[
-            new PersonalNotifications(user_id),
+            new PersonalNotifications(),
             new PublicNotifications(),
           ],
           controller: _tabController,

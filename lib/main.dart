@@ -9,7 +9,6 @@ import 'config/routes.dart';
 
 GetIt locator = GetIt.instance;
 String e;
-String user_id;
 void setupSingletons() async {
   locator.registerLazySingleton<Services>(() => Services());
   locator.registerLazySingleton<SendMail>(() => SendMail());
@@ -19,7 +18,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   e = prefs.getString('email');
-  user_id = prefs.getString('user_uid');
   setupSingletons();
   runApp(MyApp());
 }
