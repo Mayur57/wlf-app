@@ -1,11 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:wlf/main.dart';
 
 class SendMail {
+  String user_id;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   Future<void> mail(String name , String issue) async {
     String username = 'vertotheapp@gmail.com';
     String password = 'worlddomination';
+    final FirebaseUser user = await auth.currentUser();
+    user_id = user.uid;
+      // here you write the codes to input the data into firestore
+
 
     final smtpServer = gmail(username, password);
     // Use the SmtpServer class to configure an SMTP server:
