@@ -17,14 +17,12 @@ class BlogPage extends StatefulWidget {
 class _BlogPageState extends State<BlogPage> {
   bool _visible = true;
   bool isScrollingDown = false;
-
-  bool fab = false;
   ScrollController _scrollController = new ScrollController();
 
   @override
   void initState() {
     super.initState();
-    myScroll();
+   myScroll();
   }
 
   @override
@@ -32,24 +30,29 @@ class _BlogPageState extends State<BlogPage> {
     _scrollController.removeListener(() {});
     super.dispose();
   }
-
   void myScroll() async {
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
-              ScrollDirection.reverse &&
+          ScrollDirection.reverse &&
           _scrollController.position.pixels > 100) {
         if (!isScrollingDown) {
-          isScrollingDown = true;
-          _visible = false;
+          setState(() {
+            isScrollingDown = true;
+            _visible = false;
+          });
+
         }
       }
       if (_scrollController.position.userScrollDirection ==
           ScrollDirection.forward) {
         if (isScrollingDown) {
-          isScrollingDown = false;
-          _visible = true;
+          setState(() {
+            isScrollingDown = false;
+            _visible = true;
+          });
         }
       }
+
     });
   }
 
