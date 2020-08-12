@@ -17,7 +17,7 @@ class Settings extends StatefulWidget {
   }
 }
 
-class SettingsState extends State<Settings> with AutomaticKeepAliveClientMixin {
+class SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,9 +120,6 @@ class SettingsState extends State<Settings> with AutomaticKeepAliveClientMixin {
       },
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }
 
 class AboutUs extends StatelessWidget {
@@ -218,6 +215,11 @@ class Developers extends StatelessWidget {
             color: Colors.blue,
             child: Container(
               height: 200,
+              child: Row(
+                children: <Widget>[
+
+                ],
+              ),
             ),
           ),
           Card(

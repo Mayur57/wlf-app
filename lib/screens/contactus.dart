@@ -17,8 +17,7 @@ class ContactUs extends StatefulWidget {
   _ContactUsState createState() => _ContactUsState();
 }
 
-class _ContactUsState extends State<ContactUs>
-    with AutomaticKeepAliveClientMixin {
+class _ContactUsState extends State<ContactUs> {
   final _formKey = GlobalKey<FormState>();
   SendMail _sendMail = GetIt.I.get<SendMail>();
   TextEditingController _name = TextEditingController();
@@ -191,9 +190,6 @@ class _ContactUsState extends State<ContactUs>
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }
 
 class CustomDivider extends StatelessWidget {

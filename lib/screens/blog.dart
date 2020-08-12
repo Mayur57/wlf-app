@@ -14,7 +14,7 @@ class BlogPage extends StatefulWidget {
   _BlogPageState createState() => _BlogPageState();
 }
 
-class _BlogPageState extends State<BlogPage> with AutomaticKeepAliveClientMixin {
+class _BlogPageState extends State<BlogPage> {
   bool _visible = true;
   bool isScrollingDown = false;
   ScrollController _scrollController = new ScrollController();
@@ -169,8 +169,4 @@ class _BlogPageState extends State<BlogPage> with AutomaticKeepAliveClientMixin 
       ),
     );
   }
-
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
 }
