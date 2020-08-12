@@ -33,8 +33,6 @@ class _BlogPageState extends State<BlogPage> {
     super.dispose();
   }
 
-  ///Removed scroll analysis and jump to top FAB
-  ///in favour of performance and smooth scrolling - Mayur
   void myScroll() async {
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
@@ -51,11 +49,6 @@ class _BlogPageState extends State<BlogPage> {
           isScrollingDown = false;
           _visible = true;
         }
-      }
-      if (_scrollController.position.pixels > 500) {
-        setState(() => fab = true);
-      } else {
-        setState(() => fab = false);
       }
     });
   }
@@ -77,7 +70,7 @@ class _BlogPageState extends State<BlogPage> {
                   children: <Widget>[
                     ListView.builder(
                         physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.only(bottom: 65.0, top: 102),
+                        padding: EdgeInsets.only(bottom: 65.0, top: 124),
                         controller: _scrollController,
                         itemCount: snapshot.data.documents.length,
                         itemBuilder: (context, index) {
@@ -171,18 +164,6 @@ class _BlogPageState extends State<BlogPage> {
                 );
         },
       ),
-    );
-  }
-
-  floatingActionButton() {
-    return FloatingActionButton(
-      child: Icon(Icons.arrow_upward),
-      foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
-      onPressed: () {
-        _scrollController.animateTo(0,
-            duration: new Duration(seconds: 1), curve: Curves.ease);
-      },
     );
   }
 }

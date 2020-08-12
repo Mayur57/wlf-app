@@ -1,14 +1,10 @@
 import 'dart:ui';
-import 'package:get_it/get_it.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wlf/res/color.dart';
-import 'package:wlf/util/authentication.dart';
 
 class PublicNotifications extends StatelessWidget {
-  ScrollController _scrollController = new ScrollController();
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -22,10 +18,8 @@ class PublicNotifications extends StatelessWidget {
             : Stack(
                 children: <Widget>[
                   ListView.builder(
-                      physics: BouncingScrollPhysics(),
                       padding: EdgeInsets.only(bottom: 65.0, top: 17.0),
                       shrinkWrap: true,
-                      controller: _scrollController,
                       itemCount: snapshot.data.documents.length,
                       itemBuilder: (context, index) {
                         DocumentSnapshot _notifications =
@@ -85,7 +79,7 @@ class PublicNotifications extends StatelessWidget {
                       }),
                 ],
               );
-      },
+        },
     );
   }
 }

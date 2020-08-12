@@ -116,7 +116,7 @@ class _BottomNavigationBarControllerState
         ),
         child: Opacity(
           //you can change the opacity to whatever suits you best
-          opacity: 0.5,
+          opacity: 0.55,
           child: BottomNavigationBar(
             onTap: (int index) => setState(() => _selectedIndex = index),
             currentIndex: selectedIndex,
