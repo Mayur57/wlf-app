@@ -8,17 +8,16 @@ import 'package:wlf/util/authentication.dart';
 
 class PersonalNotifications extends StatelessWidget {
   ScrollController _scrollController = new ScrollController();
-  //Services _services = GetIt.I.get<Services>();
+  Services _services = GetIt.I.get<Services>();
   String id;
   PersonalNotifications(this.id);
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance
           .collection("users")
-          .document(id)
+          .document(_services.status)
           .collection("notifications")
           .snapshots(),
       builder: (context, snapshot) {
