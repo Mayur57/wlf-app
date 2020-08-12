@@ -135,9 +135,9 @@ class AboutUs extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
               child: Text(
-                lipsum, //TODO: Add AboutUs
+                aboutus, //TODO: Add AboutUs
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontFamily: 'NHGTX'),
+                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
               ),
             ),
           ),
@@ -393,8 +393,13 @@ class Developers extends StatelessWidget {
                               FontAwesomeIcons.linkedin,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://www.linkedin.com/in/as-aryamansingh";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                           IconButton(
@@ -402,17 +407,13 @@ class Developers extends StatelessWidget {
                               FontAwesomeIcons.instagram,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
-                            },
-                          ),
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.twitter,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://www.instagram.com/as.aryamansingh/";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                           IconButton(
@@ -467,7 +468,7 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Kaustubh Sharma',
                                   style: TextStyle(
-                                      fontSize: 3.31 * SizeConfig.textSizeMultiplier,
+                                      fontSize: 28,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
@@ -495,8 +496,13 @@ class Developers extends StatelessWidget {
                               FontAwesomeIcons.linkedin,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://www.linkedin.com/in/kaustubh-sharma-267469183";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                           IconButton(
@@ -604,7 +610,7 @@ class PrivacyPolicy extends StatelessWidget {
               child: Text(
                 privacyPolicy,
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontFamily: 'NHGTX'),
+                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
               ),
             ),
           ),
@@ -691,7 +697,7 @@ class TermsAndConditions extends StatelessWidget {
               child: Text(
                 t_and_c,
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontFamily: 'NHGTX'),
+                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
               ),
             ),
           ),
