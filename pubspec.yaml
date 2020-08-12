@@ -25,6 +25,8 @@ dependencies:
   expandable: ^4.1.4
   provider: ^2.0.1
   shared_preferences: ^0.4.2
+  font_awesome_flutter: ^8.8.1
+  url_launcher: ^5.5.0
 
   get_it: ^4.0.4
   mailer: ^3.0.4

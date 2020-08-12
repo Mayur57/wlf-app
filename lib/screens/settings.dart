@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:math' as math;
 import 'package:wlf/res/color.dart';
 import 'package:wlf/res/strings.dart';
@@ -131,7 +133,11 @@ class AboutUs extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
-              child: Text(lipsum, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
+              child: Text(
+                lipsum,
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontFamily: 'NHGTX'),
+              ),
             ),
           ),
         ],
@@ -206,32 +212,298 @@ class AboutUs extends StatelessWidget {
 }
 
 class Developers extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     buildList() {
       return Column(
         children: <Widget>[
-          Card(
-            color: Colors.blue,
-            child: Container(
-              height: 200,
-              child: Row(
-                children: <Widget>[
-
-                ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Color(0xFF4EC8DF),
+              child: Container(
+                height: 160,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/developers-02.png',
+                            height: 80,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Mayur Bhoi',
+                                  style: TextStyle(
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      fontFamily: 'NHGTXM'),
+                                ),
+                                Divider(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Flutter Developer and UI/UX',
+                                  style: TextStyle(
+                                      color: Colors.white, fontFamily: 'NHGTX'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.linkedin,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.instagram,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.twitter,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.github,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-          Card(
-            color: Colors.green,
-            child: Container(
-              height: 200,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Color(0xFF4EC8DF),
+              child: Container(
+                height: 160,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/developers-01.png',
+                            height: 80,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Aryaman Singh',
+                                  style: TextStyle(
+                                      fontSize: 32,
+                                      color: Colors.white,
+                                      fontFamily: 'NHGTXM'),
+                                ),
+                                Divider(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Flutter Developer and Backend',
+                                  style: TextStyle(
+                                      color: Colors.white, fontFamily: 'NHGTX'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.linkedin,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.instagram,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.twitter,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.github,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-          Card(
-            color: Colors.red,
-            child: Container(
-              height: 200,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Color(0xFF4EC8DF),
+              child: Container(
+                height: 160,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/developers-03.png',
+                            height: 80,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Kaustubh Sharma',
+                                  style: TextStyle(
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      fontFamily: 'NHGTXM'),
+                                ),
+                                Divider(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Flutter Developer and Madarchod',
+                                  style: TextStyle(
+                                      color: Colors.white, fontFamily: 'NHGTX'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.linkedin,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.instagram,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.twitter,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.github,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              print("hehe");
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
@@ -250,7 +522,7 @@ class Developers extends StatelessWidget {
                   theme: const ExpandableThemeData(
                     headerAlignment: ExpandablePanelHeaderAlignment.center,
                     tapBodyToExpand: true,
-                    tapBodyToCollapse: true,
+                    tapBodyToCollapse: false,
                     hasIcon: false,
                   ),
                   header: Container(
@@ -314,7 +586,11 @@ class PrivacyPolicy extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
-              child: Text(privacyPolicy, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
+              child: Text(
+                privacyPolicy,
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontFamily: 'NHGTX'),
+              ),
             ),
           ),
         ],
@@ -397,7 +673,11 @@ class TermsAndConditions extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
-              child: Text(t_and_c, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
+              child: Text(
+                t_and_c,
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontFamily: 'NHGTX'),
+              ),
             ),
           ),
         ],
