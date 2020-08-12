@@ -35,45 +35,35 @@ class Services {
           prefs.setString('name', value.data["name"]);
         });
       } else {
-        status = "ERROR : Undefined error has occurred.Please retry.";
+        status = "ERROR: An unknown error has occurred. Please try again.";
       }
     } catch (onError) {
       switch (onError.code) {
         case "ERROR_INVALID_EMAIL":
           status =
-              "ERROR : Your email address appears to be malformed.Please retry.";
+              "ERROR: Your email address appears to be invalid. Please try again.";
           break;
         case "ERROR_WRONG_PASSWORD":
-          status = "ERROR : Your password is wrong.Please retry.";
+          status = "ERROR: Incorrect password.";
           break;
         case "ERROR_USER_NOT_FOUND":
-          status = "ERROR : User with this email doesn't exist.Please retry.";
+          status = "ERROR: User with this email doesn't exist. Please try again.";
           break;
         case "ERROR_USER_DISABLED":
           status =
-              "ERROR : User with this email has been disabled.Please retry.";
+              "ERROR: User with this email has been disabled. Please contact the administrator.";
           break;
         case "ERROR_TOO_MANY_REQUESTS":
-          status = "ERROR : Too many requests. Try again later.Please retry.";
+          status = "ERROR: Too many requests. Please try again after some time.";
           break;
         case "ERROR_OPERATION_NOT_ALLOWED":
           status =
-              "ERROR : Signing in with Email and Password is not enabled.Please retry.";
+              "ERROR: Signing in with these set of credentials is not enabled or allowed. Please contact the administrator.";
           break;
         default:
-          status = "ERROR : An undefined Error happened.Please retry.";
+          status = "ERROR: An unknown error has occurred. Please try again.";
       }
     }
     return status;
   }
-/*
-  Future<void>signOut(BuildContext context) async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove('email');
-    await _auth.signOut().then((value){
-      Navigator.of(context).pushReplacementNamed('/login');
-    });
-  }
-
- */
 }

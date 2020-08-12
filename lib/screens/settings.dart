@@ -2,12 +2,16 @@ import 'package:expandable/expandable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 import 'package:wlf/res/color.dart';
 import 'package:wlf/util/authentication.dart';
 import 'package:wlf/util/scaler.dart';
+
+import '../res/color.dart';
+import '../res/color.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key key}) : super(key: key);
@@ -39,9 +43,7 @@ class SettingsState extends State<Settings> {
                     Text(
                       'Settings',
                       style: TextStyle(
-                          fontSize: 40,
-                          fontFamily: 'NHGTXM',
-                          color: mainColor),
+                          fontSize: 32, fontFamily: 'NHGTXM', color: mainColor),
                     ),
                   ],
                 )),
@@ -49,27 +51,159 @@ class SettingsState extends State<Settings> {
         ),
       ),
       body: ExpandableTheme(
+        data: ExpandableThemeData(),
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: <Widget>[
-            CustomDivider1(),
-            SizedBox(
-              height: 40,
-            ),
+            Image.asset('assets/images/settings.png', height: 270,),
+            SizedBox(height: 20,),
             AboutUs(),
-            SizedBox(
-              height: 20,
-            ),
             CustomDivider(),
-            SizedBox(
-              height: 20,
-            ),
             Developers(),
-            SizedBox(
-              height: 60,
+            CustomDivider(),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: GestureDetector(
+                onTap: _showLogoutAlertConfirmationDialog,
+                child: Card(
+                  color: Colors.redAccent,
+                  clipBehavior: Clip.antiAlias,
+                  child: Container(
+                    height: 60,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.power_settings_new,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "Logout",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontFamily: 'NHGTXM'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
-            LogoutButton(),
+            SizedBox(height: 60,),
           ],
+        ),
+      ),
+    );
+  }
+
+  _showLogoutAlertConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return LogoutAlertConfirmation();
+      },
+    );
+  }
+}
+
+class AboutUs extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    buildList() {
+      return Column(
+        children: <Widget>[
+          Card(
+            color: Colors.blue,
+            child: Container(
+              height: 200,
+            ),
+          ),
+          Card(
+            color: Colors.green,
+            child: Container(
+              height: 200,
+            ),
+          ),
+          Card(
+            color: Colors.red,
+            child: Container(
+              height: 200,
+            ),
+          ),
+        ],
+      );
+    }
+
+    return ExpandableNotifier(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ScrollOnExpand(
+          child: Card(
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: <Widget>[
+                ExpandablePanel(
+                  theme: const ExpandableThemeData(
+                    headerAlignment: ExpandablePanelHeaderAlignment.center,
+                    tapBodyToExpand: true,
+                    tapBodyToCollapse: true,
+                    hasIcon: false,
+                  ),
+                  header: Container(
+                    height: 60,
+                    color: mainColor.withOpacity(0.7),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.insert_emoticon,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                "About Us",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontFamily: 'NHGTXM'),
+                              ),
+                            ],
+                          ),
+                          ExpandableIcon(
+                            theme: const ExpandableThemeData(
+                              expandIcon: Icons.keyboard_arrow_down,
+                              collapseIcon: Icons.keyboard_arrow_up,
+                              iconColor: Colors.white,
+                              iconSize: 28.0,
+                              iconRotationAngle: math.pi,
+                              iconPadding: EdgeInsets.only(right: 5),
+                              hasIcon: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  expanded: buildList(),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -171,110 +305,53 @@ class Developers extends StatelessWidget {
   }
 }
 
-class AboutUs extends StatelessWidget {
+class LogoutAlertConfirmation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    buildList() {
-      return Column(
-        children: <Widget>[
-          Card(
-            color: Colors.blue,
-            child: Container(
-              height: 200,
-            ),
-          ),
-          Card(
-            color: Colors.green,
-            child: Container(
-              height: 200,
-            ),
-          ),
-          Card(
-            color: Colors.red,
-            child: Container(
-              height: 200,
-            ),
-          ),
-        ],
-      );
-    }
+    return AlertDialog(
+      title: Text(
+        'Logout',
+        style: TextStyle(
 
-    return ExpandableNotifier(
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: ScrollOnExpand(
-          child: Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: <Widget>[
-                ExpandablePanel(
-                  theme: const ExpandableThemeData(
-                    headerAlignment: ExpandablePanelHeaderAlignment.center,
-                    tapBodyToExpand: true,
-                    tapBodyToCollapse: true,
-                    hasIcon: false,
-                  ),
-                  header: Container(
-                    height: 60,
-                    color: mainColor.withOpacity(0.7),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(
-                                  Icons.insert_emoticon,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                "About Us",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontFamily: 'NHGTXM'),
-                              ),
-                            ],
-                          ),
-                          ExpandableIcon(
-                            theme: const ExpandableThemeData(
-                              expandIcon: Icons.keyboard_arrow_down,
-                              collapseIcon: Icons.keyboard_arrow_up,
-                              iconColor: Colors.white,
-                              iconSize: 28.0,
-                              iconRotationAngle: math.pi,
-                              iconPadding: EdgeInsets.only(right: 5),
-                              hasIcon: false,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  expanded: buildList(),
-                ),
-              ],
-            ),
-          ),
+          fontFamily: 'NHGTXM',
         ),
       ),
-    );
-  }
-}
-class CustomDivider1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      child: Divider(
-        color: mainColor,
-        height: 1,
-        thickness: 1,
+      content: Text(
+        "Are you sure you want to logout of the app?",
+        style: TextStyle(
+          fontFamily: 'NHGTX',
+        ),
       ),
+      actions: <Widget>[
+        FlatButton(
+          child: Text(
+            'Cancel',
+            style: TextStyle(
+              color: mainColor,
+              fontFamily: 'NHGTXM',
+            ),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        FlatButton(
+          child: Text(
+            'Logout',
+            style: TextStyle(
+              color: Colors.redAccent,
+              fontFamily: 'NHGTXM',
+            ),
+          ),
+          onPressed: () async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            prefs.remove('email');
+            await FirebaseAuth.instance.signOut().then((value) {
+              Navigator.of(context).pushReplacementNamed('/login');
+            });
+          },
+        ),
+      ],
     );
   }
 }
@@ -293,40 +370,6 @@ class CustomDivider extends StatelessWidget {
   }
 }
 
-class LogoutButton extends StatelessWidget {
-  Services _services = GetIt.I.get<Services>();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      child: ButtonTheme(
-        height: 5.2 * SizeConfig.heightSizeMultiplier,
-        child: FlatButton(
-          onPressed: () async{
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.remove('email');
-            await FirebaseAuth.instance.signOut().then((value){
-              Navigator.of(context).pushReplacementNamed('/login');
-            });
-          },
-          color: Colors.redAccent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-          child: Text(
-            'Logout',
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'NHGTXM',
-              fontSize: 17,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class DarkModeToggle extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -336,16 +379,15 @@ class DarkModeToggle extends StatefulWidget {
 
 class DarkModeToggleState extends State<DarkModeToggle> {
   bool isDark = true;
-  
+
   _toggleTheme() {
-    if(!isDark){
+    if (!isDark) {
       print("Dark theme disabled");
-    }
-    else{
+    } else {
       print("Dark theme enabled");
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Padding(

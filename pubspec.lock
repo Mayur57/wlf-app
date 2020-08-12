@@ -323,7 +323,7 @@ packages:
       name: mime
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.6+3"
+    version: "0.9.7"
   modal_progress_hud:
     dependency: "direct main"
     description:

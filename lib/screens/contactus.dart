@@ -44,7 +44,7 @@ class _ContactUsState extends State<ContactUs> {
                     Text(
                       'Contact Us',
                       style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 32,
                           fontFamily: 'NHGTXM',
                           color: mainColor),
                     ),
@@ -55,15 +55,14 @@ class _ContactUsState extends State<ContactUs> {
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Align(
           alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              CustomDivider(),
-              //Header
               SizedBox(
-                height: 60,
+                height: 20,
               ),
               Container(
                 width: 84.37 * SizeConfig.widthSizeMultiplier,
@@ -77,7 +76,7 @@ class _ContactUsState extends State<ContactUs> {
                 ),
               ),
               SizedBox(
-                height: 60,
+                height: 30,
               ),
               //The form
               Container(
@@ -134,7 +133,7 @@ class _ContactUsState extends State<ContactUs> {
                         ),
                       ),
                       SizedBox(
-                        height: 5 * SizeConfig.heightSizeMultiplier,
+                        height: 3 * SizeConfig.heightSizeMultiplier,
                       ),
                       Align(
                         alignment: Alignment.center,
@@ -174,6 +173,9 @@ class _ContactUsState extends State<ContactUs> {
                             ),
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: 10 * SizeConfig.heightSizeMultiplier,
                       ),
                     ],
                   ),
