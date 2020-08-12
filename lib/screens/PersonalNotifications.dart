@@ -9,8 +9,6 @@ import 'package:wlf/util/authentication.dart';
 class PersonalNotifications extends StatelessWidget {
   ScrollController _scrollController = new ScrollController();
   Services _services = GetIt.I.get<Services>();
-  String id;
-  PersonalNotifications(this.id);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
