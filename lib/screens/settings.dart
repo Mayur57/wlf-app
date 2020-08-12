@@ -77,7 +77,7 @@ class SettingsState extends State<Settings> {
                   color: Colors.redAccent,
                   clipBehavior: Clip.antiAlias,
                   child: Container(
-                    height: 6.71 * SizeConfig.heightSizeMultiplier,
+                    height: 60,
                     child: Align(
                       alignment: Alignment.center,
                       child: Padding(
@@ -94,7 +94,7 @@ class SettingsState extends State<Settings> {
                             Text(
                               "Logout",
                               style: TextStyle(
-                                  fontSize: 2.23 * SizeConfig.textSizeMultiplier,
+                                  fontSize: 20,
                                   color: Colors.white,
                                   fontFamily: 'NHGTXM'),
                             ),
@@ -161,7 +161,7 @@ class AboutUs extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 6.71 * SizeConfig.heightSizeMultiplier,
+                    height: 60,
                     color: mainColor.withOpacity(0.7),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -180,7 +180,7 @@ class AboutUs extends StatelessWidget {
                               Text(
                                 "About Us",
                                 style: TextStyle(
-                                    fontSize: 2.23 * SizeConfig.textSizeMultiplier,
+                                    fontSize: 20,
                                     color: Colors.white,
                                     fontFamily: 'NHGTXM'),
                               ),
@@ -341,7 +341,7 @@ class Developers extends StatelessWidget {
             child: Card(
               color: Color(0xFF4EC8DF),
               child: Container(
-                height: 17.91 * SizeConfig.heightSizeMultiplier,
+                height: 160,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -443,7 +443,7 @@ class Developers extends StatelessWidget {
             child: Card(
               color: Color(0xFF4EC8DF), //Lightened Main Color due to opacity incompatibilities
               child: Container(
-                height: 17.91 * SizeConfig.heightSizeMultiplier,
+                height: 160,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -541,7 +541,7 @@ class Developers extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 6.71 * SizeConfig.heightSizeMultiplier,
+                    height: 60,
                     color: mainColor.withOpacity(0.7),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -852,7 +852,7 @@ class DarkModeToggleState extends State<DarkModeToggle> {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
-        height: 70,
+        height: 7.83 * SizeConfig.heightSizeMultiplier,
         child: Card(
           color: mainColor.withOpacity(0.7),
           child: Padding(
@@ -872,7 +872,7 @@ class DarkModeToggleState extends State<DarkModeToggle> {
                     Text(
                       "Dark Mode",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 2.23 * SizeConfig.textSizeMultiplier,
                           color: Colors.white,
                           fontFamily: 'NHGTXM'),
                     ),
