@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:math' as math;
 import 'package:wlf/res/color.dart';
 import 'package:wlf/res/strings.dart';
+import 'package:wlf/util/scaler.dart';
 import '../res/color.dart';
 
 class Settings extends StatefulWidget {
@@ -25,7 +26,7 @@ class SettingsState extends State<Settings> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90.0),
+        preferredSize: Size.fromHeight(10 * SizeConfig.heightSizeMultiplier),
         child: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.white,
@@ -36,12 +37,12 @@ class SettingsState extends State<Settings> {
                 child: Row(
                   children: <Widget>[
                     SizedBox(
-                      width: 16,
+                      width: 3.72 * SizeConfig.widthSizeMultiplier,
                     ),
                     Text(
                       'Settings',
                       style: TextStyle(
-                          fontSize: 32, fontFamily: 'NHGTXM', color: mainColor),
+                          fontSize: 3.58 * SizeConfig.textSizeMultiplier, fontFamily: 'NHGTXM', color: mainColor),
                     ),
                   ],
                 )),
@@ -55,10 +56,10 @@ class SettingsState extends State<Settings> {
           children: <Widget>[
             Image.asset(
               'assets/images/settings.png',
-              height: 230,
+              height: 25.75 * SizeConfig.heightSizeMultiplier,
             ),
             SizedBox(
-              height: 20,
+              height: 2.23 * SizeConfig.heightSizeMultiplier,
             ),
             AboutUs(),
             CustomDivider(),
@@ -76,7 +77,7 @@ class SettingsState extends State<Settings> {
                   color: Colors.redAccent,
                   clipBehavior: Clip.antiAlias,
                   child: Container(
-                    height: 60,
+                    height: 6.71 * SizeConfig.heightSizeMultiplier,
                     child: Align(
                       alignment: Alignment.center,
                       child: Padding(
@@ -93,7 +94,7 @@ class SettingsState extends State<Settings> {
                             Text(
                               "Logout",
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 2.23 * SizeConfig.textSizeMultiplier,
                                   color: Colors.white,
                                   fontFamily: 'NHGTXM'),
                             ),
@@ -106,7 +107,7 @@ class SettingsState extends State<Settings> {
               ),
             ),
             SizedBox(
-              height: 60,
+              height: 6.71 * SizeConfig.heightSizeMultiplier,
             ),
           ],
         ),
@@ -134,7 +135,7 @@ class AboutUs extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
               child: Text(
-                lipsum,
+                lipsum, //TODO: Add AboutUs
                 textAlign: TextAlign.justify,
                 style: TextStyle(fontFamily: 'NHGTX'),
               ),
@@ -160,7 +161,7 @@ class AboutUs extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 60,
+                    height: 6.71 * SizeConfig.heightSizeMultiplier,
                     color: mainColor.withOpacity(0.7),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -179,7 +180,7 @@ class AboutUs extends StatelessWidget {
                               Text(
                                 "About Us",
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 2.23 * SizeConfig.textSizeMultiplier,
                                     color: Colors.white,
                                     fontFamily: 'NHGTXM'),
                               ),
@@ -212,12 +213,12 @@ class AboutUs extends StatelessWidget {
 }
 
 class Developers extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     buildList() {
       return Column(
         children: <Widget>[
+          ///Mayur Bhoi
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
@@ -275,8 +276,13 @@ class Developers extends StatelessWidget {
                               FontAwesomeIcons.linkedin,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://www.linkedin.com/in/mayur-bhoi-a60081175";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                           IconButton(
@@ -284,8 +290,13 @@ class Developers extends StatelessWidget {
                               FontAwesomeIcons.instagram,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://www.instagram.com/mayurbhoii/";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                           IconButton(
@@ -293,8 +304,13 @@ class Developers extends StatelessWidget {
                               FontAwesomeIcons.twitter,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://twitter.com/mayurtheboi";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                           IconButton(
@@ -302,8 +318,13 @@ class Developers extends StatelessWidget {
                               FontAwesomeIcons.github,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://github.com/Mayur57";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                         ],
@@ -314,12 +335,13 @@ class Developers extends StatelessWidget {
               ),
             ),
           ),
+          ///Aryaman Singh
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
               color: Color(0xFF4EC8DF),
               child: Container(
-                height: 160,
+                height: 17.91 * SizeConfig.heightSizeMultiplier,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -331,7 +353,7 @@ class Developers extends StatelessWidget {
                         children: <Widget>[
                           Image.asset(
                             'assets/images/developers-01.png',
-                            height: 80,
+                            height: 8.95 * SizeConfig.heightSizeMultiplier,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -343,12 +365,12 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Aryaman Singh',
                                   style: TextStyle(
-                                      fontSize: 32,
+                                      fontSize: 3.13 * SizeConfig.textSizeMultiplier,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
                                 Divider(
-                                  height: 5,
+                                  height: 0.55 * SizeConfig.heightSizeMultiplier,
                                 ),
                                 Text(
                                   'Flutter Developer and Backend',
@@ -398,8 +420,13 @@ class Developers extends StatelessWidget {
                               FontAwesomeIcons.github,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://github.com/aaryaa07";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                         ],
@@ -410,12 +437,13 @@ class Developers extends StatelessWidget {
               ),
             ),
           ),
+          ///Kastab
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
-              color: Color(0xFF4EC8DF),
+              color: Color(0xFF4EC8DF), //Lightened Main Color due to opacity incompatibilities
               child: Container(
-                height: 160,
+                height: 17.91 * SizeConfig.heightSizeMultiplier,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -427,7 +455,7 @@ class Developers extends StatelessWidget {
                         children: <Widget>[
                           Image.asset(
                             'assets/images/developers-03.png',
-                            height: 80,
+                            height: 8.95 * SizeConfig.heightSizeMultiplier,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -439,15 +467,15 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Kaustubh Sharma',
                                   style: TextStyle(
-                                      fontSize: 28,
+                                      fontSize: 3.31 * SizeConfig.textSizeMultiplier,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
                                 Divider(
-                                  height: 5,
+                                  height: 0.55 * SizeConfig.heightSizeMultiplier,
                                 ),
                                 Text(
-                                  'Flutter Developer and Madarchod',
+                                  'Flutter Developer and Backend',
                                   style: TextStyle(
                                       color: Colors.white, fontFamily: 'NHGTX'),
                                 ),
@@ -473,29 +501,16 @@ class Developers extends StatelessWidget {
                           ),
                           IconButton(
                             icon: FaIcon(
-                              FontAwesomeIcons.instagram,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              print("hehe");
-                            },
-                          ),
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.twitter,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              print("hehe");
-                            },
-                          ),
-                          IconButton(
-                            icon: FaIcon(
                               FontAwesomeIcons.github,
                               color: Colors.white,
                             ),
-                            onPressed: () {
-                              print("hehe");
+                            onPressed: () async {
+                              String link = "https://github.com/1KS6";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
                             },
                           ),
                         ],
@@ -526,7 +541,7 @@ class Developers extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 60,
+                    height: 6.71 * SizeConfig.heightSizeMultiplier,
                     color: mainColor.withOpacity(0.7),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
