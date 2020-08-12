@@ -60,18 +60,11 @@ class PersonalNotifications extends StatelessWidget {
                                     SizedBox(
                                       height: 10.0,
                                     ),
-                                    Flexible(
+                                    Align(
+                                      alignment: Alignment.centerLeft,
                                       child: Text(
                                         _notifications.data["details"],
-                                        style: _notifications
-                                            .data["details"]
-                                            .length >
-                                            125
-                                            ? TextStyle(
-                                            fontSize: 16,
-                                            fontFamily: 'NHGTX',
-                                            color: Colors.white)
-                                            : TextStyle(
+                                        style: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'NHGTX',
                                             color: Colors.white),
