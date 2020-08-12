@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 import 'package:wlf/res/color.dart';
+import 'package:wlf/res/strings.dart';
 import '../res/color.dart';
 
 class Settings extends StatefulWidget {
@@ -52,7 +53,7 @@ class SettingsState extends State<Settings> with AutomaticKeepAliveClientMixin {
           children: <Widget>[
             Image.asset(
               'assets/images/settings.png',
-              height: 250,
+              height: 230,
             ),
             SizedBox(
               height: 20,
@@ -62,6 +63,8 @@ class SettingsState extends State<Settings> with AutomaticKeepAliveClientMixin {
             Developers(),
             CustomDivider(),
             PrivacyPolicy(),
+            CustomDivider(),
+            TermsAndConditions(),
             CustomDivider(),
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -128,22 +131,10 @@ class AboutUs extends StatelessWidget {
     buildList() {
       return Column(
         children: <Widget>[
-          Card(
-            color: Colors.blue,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
-              height: 200,
-            ),
-          ),
-          Card(
-            color: Colors.green,
-            child: Container(
-              height: 200,
-            ),
-          ),
-          Card(
-            color: Colors.red,
-            child: Container(
-              height: 200,
+              child: Text(lipsum, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
             ),
           ),
         ],
@@ -318,22 +309,10 @@ class PrivacyPolicy extends StatelessWidget {
     buildList() {
       return Column(
         children: <Widget>[
-          Card(
-            color: Colors.blue,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
-              height: 200,
-            ),
-          ),
-          Card(
-            color: Colors.green,
-            child: Container(
-              height: 200,
-            ),
-          ),
-          Card(
-            color: Colors.red,
-            child: Container(
-              height: 200,
+              child: Text(privacyPolicy, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
             ),
           ),
         ],
@@ -374,6 +353,89 @@ class PrivacyPolicy extends StatelessWidget {
                               ),
                               Text(
                                 "Privacy Policy",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontFamily: 'NHGTXM'),
+                              ),
+                            ],
+                          ),
+                          ExpandableIcon(
+                            theme: const ExpandableThemeData(
+                              expandIcon: Icons.keyboard_arrow_down,
+                              collapseIcon: Icons.keyboard_arrow_up,
+                              iconColor: Colors.white,
+                              iconSize: 28.0,
+                              iconRotationAngle: math.pi,
+                              iconPadding: EdgeInsets.only(right: 5),
+                              hasIcon: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  expanded: buildList(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class TermsAndConditions extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    buildList() {
+      return Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
+            child: Container(
+              child: Text(t_and_c, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
+            ),
+          ),
+        ],
+      );
+    }
+
+    return ExpandableNotifier(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ScrollOnExpand(
+          child: Card(
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: <Widget>[
+                ExpandablePanel(
+                  theme: const ExpandableThemeData(
+                    headerAlignment: ExpandablePanelHeaderAlignment.center,
+                    tapBodyToExpand: true,
+                    tapBodyToCollapse: true,
+                    hasIcon: false,
+                  ),
+                  header: Container(
+                    height: 60,
+                    color: mainColor.withOpacity(0.7),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.assignment,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                "Terms and Conditions",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.white,
@@ -462,7 +524,7 @@ class CustomDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: Divider(
         height: 1,
       ),

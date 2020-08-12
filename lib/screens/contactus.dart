@@ -74,7 +74,7 @@ class _ContactUsState extends State<ContactUs>
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontFamily: 'NHGTX',
-                    fontSize: 17,
+                    fontSize: 15,
                   ),
                 ),
               ),
