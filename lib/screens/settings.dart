@@ -3,10 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:math' as math;
 import 'package:wlf/res/color.dart';
 import 'package:wlf/res/strings.dart';
+import 'package:wlf/util/scaler.dart';
 import '../res/color.dart';
 
 class Settings extends StatefulWidget {
@@ -23,7 +26,7 @@ class SettingsState extends State<Settings> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90.0),
+        preferredSize: Size.fromHeight(10 * SizeConfig.heightSizeMultiplier),
         child: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.white,
@@ -34,12 +37,12 @@ class SettingsState extends State<Settings> {
                 child: Row(
                   children: <Widget>[
                     SizedBox(
-                      width: 16,
+                      width: 3.72 * SizeConfig.widthSizeMultiplier,
                     ),
                     Text(
                       'Settings',
                       style: TextStyle(
-                          fontSize: 32, fontFamily: 'NHGTXM', color: mainColor),
+                          fontSize: 3.58 * SizeConfig.textSizeMultiplier, fontFamily: 'NHGTXM', color: mainColor),
                     ),
                   ],
                 )),
@@ -53,10 +56,10 @@ class SettingsState extends State<Settings> {
           children: <Widget>[
             Image.asset(
               'assets/images/settings.png',
-              height: 230,
+              height: 25.75 * SizeConfig.heightSizeMultiplier,
             ),
             SizedBox(
-              height: 20,
+              height: 2.23 * SizeConfig.heightSizeMultiplier,
             ),
             AboutUs(),
             CustomDivider(),
@@ -104,7 +107,7 @@ class SettingsState extends State<Settings> {
               ),
             ),
             SizedBox(
-              height: 60,
+              height: 6.71 * SizeConfig.heightSizeMultiplier,
             ),
           ],
         ),
@@ -131,7 +134,11 @@ class AboutUs extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
-              child: Text(lipsum, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
+              child: Text(
+                aboutus, //TODO: Add AboutUs
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
+              ),
             ),
           ),
         ],
@@ -211,27 +218,313 @@ class Developers extends StatelessWidget {
     buildList() {
       return Column(
         children: <Widget>[
-          Card(
-            color: Colors.blue,
-            child: Container(
-              height: 200,
-              child: Row(
-                children: <Widget>[
-
-                ],
+          ///Mayur Bhoi
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Color(0xFF4EC8DF),
+              child: Container(
+                height: 160,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/developers-02.png',
+                            height: 80,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Mayur Bhoi',
+                                  style: TextStyle(
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      fontFamily: 'NHGTXM'),
+                                ),
+                                Divider(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Flutter Developer and UI/UX',
+                                  style: TextStyle(
+                                      color: Colors.white, fontFamily: 'NHGTX'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.linkedin,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://www.linkedin.com/in/mayur-bhoi-a60081175";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.instagram,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://www.instagram.com/mayurbhoii/";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.twitter,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://twitter.com/mayurtheboi";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.github,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://github.com/Mayur57";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-          Card(
-            color: Colors.green,
-            child: Container(
-              height: 200,
+          ///Aryaman Singh
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Color(0xFF4EC8DF),
+              child: Container(
+                height: 160,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/developers-01.png',
+                            height: 8.95 * SizeConfig.heightSizeMultiplier,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Aryaman Singh',
+                                  style: TextStyle(
+                                      fontSize: 3.13 * SizeConfig.textSizeMultiplier,
+                                      color: Colors.white,
+                                      fontFamily: 'NHGTXM'),
+                                ),
+                                Divider(
+                                  height: 0.55 * SizeConfig.heightSizeMultiplier,
+                                ),
+                                Text(
+                                  'Flutter Developer and Backend',
+                                  style: TextStyle(
+                                      color: Colors.white, fontFamily: 'NHGTX'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.linkedin,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://www.linkedin.com/in/as-aryamansingh";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.instagram,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://www.instagram.com/as.aryamansingh/";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.github,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://github.com/aaryaa07";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-          Card(
-            color: Colors.red,
-            child: Container(
-              height: 200,
+          ///Kastab
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Color(0xFF4EC8DF), //Lightened Main Color due to opacity incompatibilities
+              child: Container(
+                height: 160,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/developers-03.png',
+                            height: 8.95 * SizeConfig.heightSizeMultiplier,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Kaustubh Sharma',
+                                  style: TextStyle(
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      fontFamily: 'NHGTXM'),
+                                ),
+                                Divider(
+                                  height: 0.55 * SizeConfig.heightSizeMultiplier,
+                                ),
+                                Text(
+                                  'Flutter Developer and Backend',
+                                  style: TextStyle(
+                                      color: Colors.white, fontFamily: 'NHGTX'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.linkedin,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://www.linkedin.com/in/kaustubh-sharma-267469183";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.github,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              String link = "https://github.com/1KS6";
+                              if (await canLaunch(link)) {
+                                await launch(link);
+                              } else {
+                                throw 'Could not launch the link';
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
@@ -250,7 +543,7 @@ class Developers extends StatelessWidget {
                   theme: const ExpandableThemeData(
                     headerAlignment: ExpandablePanelHeaderAlignment.center,
                     tapBodyToExpand: true,
-                    tapBodyToCollapse: true,
+                    tapBodyToCollapse: false,
                     hasIcon: false,
                   ),
                   header: Container(
@@ -314,7 +607,11 @@ class PrivacyPolicy extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
-              child: Text(privacyPolicy, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
+              child: Text(
+                privacyPolicy,
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
+              ),
             ),
           ),
         ],
@@ -397,7 +694,11 @@ class TermsAndConditions extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
             child: Container(
-              child: Text(t_and_c, textAlign: TextAlign.justify, style: TextStyle(fontFamily: 'NHGTX'),),
+              child: Text(
+                t_and_c,
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
+              ),
             ),
           ),
         ],
@@ -557,7 +858,7 @@ class DarkModeToggleState extends State<DarkModeToggle> {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
-        height: 70,
+        height: 7.83 * SizeConfig.heightSizeMultiplier,
         child: Card(
           color: mainColor.withOpacity(0.7),
           child: Padding(
@@ -577,7 +878,7 @@ class DarkModeToggleState extends State<DarkModeToggle> {
                     Text(
                       "Dark Mode",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 2.23 * SizeConfig.textSizeMultiplier,
                           color: Colors.white,
                           fontFamily: 'NHGTXM'),
                     ),
