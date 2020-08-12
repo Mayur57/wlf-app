@@ -3,14 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 import 'package:wlf/res/color.dart';
-import 'package:wlf/util/authentication.dart';
-import 'package:wlf/util/scaler.dart';
-
-import '../res/color.dart';
 import '../res/color.dart';
 
 class Settings extends StatefulWidget {
@@ -21,7 +16,7 @@ class Settings extends StatefulWidget {
   }
 }
 
-class SettingsState extends State<Settings> {
+class SettingsState extends State<Settings> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,11 +50,18 @@ class SettingsState extends State<Settings> {
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: <Widget>[
-            Image.asset('assets/images/settings.png', height: 270,),
-            SizedBox(height: 20,),
+            Image.asset(
+              'assets/images/settings.png',
+              height: 250,
+            ),
+            SizedBox(
+              height: 20,
+            ),
             AboutUs(),
             CustomDivider(),
             Developers(),
+            CustomDivider(),
+            PrivacyPolicy(),
             CustomDivider(),
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -98,7 +100,9 @@ class SettingsState extends State<Settings> {
                 ),
               ),
             ),
-            SizedBox(height: 60,),
+            SizedBox(
+              height: 60,
+            ),
           ],
         ),
       ),
@@ -113,6 +117,9 @@ class SettingsState extends State<Settings> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class AboutUs extends StatelessWidget {
@@ -305,6 +312,101 @@ class Developers extends StatelessWidget {
   }
 }
 
+class PrivacyPolicy extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    buildList() {
+      return Column(
+        children: <Widget>[
+          Card(
+            color: Colors.blue,
+            child: Container(
+              height: 200,
+            ),
+          ),
+          Card(
+            color: Colors.green,
+            child: Container(
+              height: 200,
+            ),
+          ),
+          Card(
+            color: Colors.red,
+            child: Container(
+              height: 200,
+            ),
+          ),
+        ],
+      );
+    }
+
+    return ExpandableNotifier(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ScrollOnExpand(
+          child: Card(
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: <Widget>[
+                ExpandablePanel(
+                  theme: const ExpandableThemeData(
+                    headerAlignment: ExpandablePanelHeaderAlignment.center,
+                    tapBodyToExpand: true,
+                    tapBodyToCollapse: true,
+                    hasIcon: false,
+                  ),
+                  header: Container(
+                    height: 60,
+                    color: mainColor.withOpacity(0.7),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.assignment_turned_in,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                "Privacy Policy",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontFamily: 'NHGTXM'),
+                              ),
+                            ],
+                          ),
+                          ExpandableIcon(
+                            theme: const ExpandableThemeData(
+                              expandIcon: Icons.keyboard_arrow_down,
+                              collapseIcon: Icons.keyboard_arrow_up,
+                              iconColor: Colors.white,
+                              iconSize: 28.0,
+                              iconRotationAngle: math.pi,
+                              iconPadding: EdgeInsets.only(right: 5),
+                              hasIcon: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  expanded: buildList(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class LogoutAlertConfirmation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -312,7 +414,6 @@ class LogoutAlertConfirmation extends StatelessWidget {
       title: Text(
         'Logout',
         style: TextStyle(
-
           fontFamily: 'NHGTXM',
         ),
       ),
@@ -362,8 +463,6 @@ class CustomDivider extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50.0),
       child: Divider(
-        color: mainColor,
-        thickness: 1,
         height: 1,
       ),
     );
@@ -422,9 +521,9 @@ class DarkModeToggleState extends State<DarkModeToggle> {
                 Switch(
                   activeColor: Colors.white,
                   value: isDark,
-                  onChanged: (bool s) {
+                  onChanged: (bool toggle) {
                     setState(() {
-                      isDark = s;
+                      isDark = toggle;
                       _toggleTheme();
                     });
                   },

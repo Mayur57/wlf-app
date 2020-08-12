@@ -2,6 +2,8 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:wlf/main.dart';
 
+
+
 class SendMail {
   Future<void> mail(String name , String issue) async {
     String username = 'vertotheapp@gmail.com';
@@ -17,8 +19,8 @@ class SendMail {
     final message = Message()
       ..from = Address(username)
       ..recipients.add(username)
-      ..subject = 'Issue by:'+ name
-      ..text = issue + '\nuid:' + user_id;
+      ..subject = 'Issue by: '+ name
+      ..text = issue + '\nuid:' + userID;
 
     try {
       final sendReport = await send(message, smtpServer);

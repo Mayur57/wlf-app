@@ -16,7 +16,7 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   TabController _tabController;
   ScrollController _scrollViewController;
   //String user_id;
@@ -81,7 +81,7 @@ class _NotificationScreenState extends State<NotificationScreen>
         },
         body: new TabBarView(
           children: <Widget>[
-            new PersonalNotifications(user_id),
+            new PersonalNotifications(userID),
             new PublicNotifications(),
           ],
           controller: _tabController,
@@ -89,4 +89,8 @@ class _NotificationScreenState extends State<NotificationScreen>
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

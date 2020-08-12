@@ -41,6 +41,8 @@ class _ContentPageState extends State<ContentPage> {
       ),
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
+        color: Colors.white,
+        opacity: 1,
         inAsyncCall: showSpinner,
         child: Stack(children: <Widget>[
           if (!flag)

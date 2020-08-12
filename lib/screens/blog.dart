@@ -14,7 +14,7 @@ class BlogPage extends StatefulWidget {
   _BlogPageState createState() => _BlogPageState();
 }
 
-class _BlogPageState extends State<BlogPage> {
+class _BlogPageState extends State<BlogPage> with AutomaticKeepAliveClientMixin {
   bool _visible = true;
   bool isScrollingDown = false;
 
@@ -72,7 +72,7 @@ class _BlogPageState extends State<BlogPage> {
                   children: <Widget>[
                     ListView.builder(
                       physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.only(bottom: 65.0, top: 102),
+                        padding: EdgeInsets.only(bottom: 65.0, top: 124,),
                         controller: _scrollController,
                         itemCount: snapshot.data.documents.length,
                         itemBuilder: (context, index) {
@@ -180,4 +180,8 @@ class _BlogPageState extends State<BlogPage> {
       },
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
