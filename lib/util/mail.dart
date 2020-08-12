@@ -1,26 +1,19 @@
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
-import 'package:wlf/main.dart';
-
-
+import 'package:get_it/get_it.dart';
+import '../util/authentication.dart';
 
 class SendMail {
+  Services _services = GetIt.I.get<Services>();
   Future<void> mail(String name , String issue) async {
     String username = 'vertotheapp@gmail.com';
     String password = 'worlddomination';
-
     final smtpServer = gmail(username, password);
-    // Use the SmtpServer class to configure an SMTP server:
-    // final smtpServer = SmtpServer('smtp.domain.com');
-    // See the named arguments of SmtpServer for further configuration
-    // options.
-
-    // Create our message.
     final message = Message()
       ..from = Address(username)
       ..recipients.add(username)
-      ..subject = 'Issue by: '+ name
-      ..text = issue + '\nuid:' + userID;
+      ..subject = 'Issue by:'+ name
+      ..text = issue + '\nuid:' + _services.status;
 
     try {
       final sendReport = await send(message, smtpServer);

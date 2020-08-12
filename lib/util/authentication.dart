@@ -26,9 +26,12 @@ class Services {
         if (fcmToken != null) {
           var tokens = _db.collection('users').document(user.uid);
 
-          await tokens.setData({
+          await tokens.updateData({
             'token': fcmToken,
-          }, merge: true);
+          }).then((_){
+            print("Successful");
+            print(fcmToken);
+          });
         }
         _db.collection("users").document(user.uid).get().then((value) {
           print(value.data["name"]);

@@ -447,6 +447,7 @@ class LogoutAlertConfirmation extends StatelessWidget {
           onPressed: () async {
             SharedPreferences prefs = await SharedPreferences.getInstance();
             prefs.remove('email');
+            prefs.remove('user_uid');
             await FirebaseAuth.instance.signOut().then((value) {
               Navigator.of(context).pushReplacementNamed('/login');
             });

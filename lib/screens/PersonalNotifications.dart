@@ -7,18 +7,14 @@ import 'package:wlf/res/color.dart';
 import 'package:wlf/util/authentication.dart';
 
 class PersonalNotifications extends StatelessWidget {
-  ScrollController _scrollController = new ScrollController();
-  //Services _services = GetIt.I.get<Services>();
-  String id;
-  PersonalNotifications(this.id);
-
+  Services _services = GetIt.I.get<Services>();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance
           .collection("users")
-          .document(id)
+          .document(_services.status)
           .collection("notifications")
           .snapshots(),
       builder: (context, snapshot) {
@@ -29,10 +25,8 @@ class PersonalNotifications extends StatelessWidget {
             : Stack(
                 children: <Widget>[
                   ListView.builder(
-                      physics: BouncingScrollPhysics(),
                       padding: EdgeInsets.only(bottom: 65.0, top: 16.0),
                       shrinkWrap: true,
-                      controller: _scrollController,
                       itemCount: snapshot.data.documents.length,
                       itemBuilder: (context, index) {
                         DocumentSnapshot _notifications =
@@ -92,7 +86,7 @@ class PersonalNotifications extends StatelessWidget {
                       }),
                 ],
               );
-      },
+        },
     );
   }
 }

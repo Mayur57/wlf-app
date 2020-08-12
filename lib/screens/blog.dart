@@ -17,14 +17,12 @@ class BlogPage extends StatefulWidget {
 class _BlogPageState extends State<BlogPage> with AutomaticKeepAliveClientMixin {
   bool _visible = true;
   bool isScrollingDown = false;
-
-  bool fab = false;
   ScrollController _scrollController = new ScrollController();
 
   @override
   void initState() {
     super.initState();
-//    myScroll();
+   myScroll();
   }
 
   @override
@@ -32,28 +30,31 @@ class _BlogPageState extends State<BlogPage> with AutomaticKeepAliveClientMixin 
     _scrollController.removeListener(() {});
     super.dispose();
   }
+  void myScroll() async {
+    _scrollController.addListener(() {
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.reverse &&
+          _scrollController.position.pixels > 100) {
+        if (!isScrollingDown) {
+          setState(() {
+            isScrollingDown = true;
+            _visible = false;
+          });
 
-  ///Removed scroll analysis and jump to top FAB
-  ///in favour of performance and smooth scrolling - Mayur
-//  void myScroll() async {
-//    _scrollController.addListener(() {
-//      if (_scrollController.position.userScrollDirection ==
-//              ScrollDirection.reverse &&
-//          _scrollController.position.pixels > 100) {
-//        if (!isScrollingDown) {
-//          isScrollingDown = true;
-//          _visible = false;
-//        }
-//      }
-//      if (_scrollController.position.userScrollDirection ==
-//          ScrollDirection.forward) {
-//        if (isScrollingDown) {
-//          isScrollingDown = false;
-//          _visible = true;
-//        }
-//      }
-//    });
-//  }
+        }
+      }
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        if (isScrollingDown) {
+          setState(() {
+            isScrollingDown = false;
+            _visible = true;
+          });
+        }
+      }
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,18 +167,6 @@ class _BlogPageState extends State<BlogPage> with AutomaticKeepAliveClientMixin 
                 );
         },
       ),
-    );
-  }
-
-  floatingActionButton() {
-    return FloatingActionButton(
-      child: Icon(Icons.arrow_upward),
-      foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
-      onPressed: () {
-        _scrollController.animateTo(0,
-            duration: new Duration(seconds: 1), curve: Curves.ease);
-      },
     );
   }
 
