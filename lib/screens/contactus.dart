@@ -44,9 +44,7 @@ class _ContactUsState extends State<ContactUs> {
                     Text(
                       'Contact Us',
                       style: TextStyle(
-                          fontSize: 32,
-                          fontFamily: 'NHGTXM',
-                          color: mainColor),
+                          fontSize: 32, fontFamily: 'NHGTXM', color: mainColor),
                     ),
                   ],
                 )),
@@ -61,8 +59,12 @@ class _ContactUsState extends State<ContactUs> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Image.asset(
+                'assets/images/CU.png',
+                height: 150,
+              ),
               SizedBox(
-                height: 20,
+                height: 25,
               ),
               Container(
                 width: 84.37 * SizeConfig.widthSizeMultiplier,
@@ -71,7 +73,7 @@ class _ContactUsState extends State<ContactUs> {
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontFamily: 'NHGTX',
-                    fontSize: 17,
+                    fontSize: 15,
                   ),
                 ),
               ),
@@ -109,11 +111,11 @@ class _ContactUsState extends State<ContactUs> {
                         },
                       ),
                       SizedBox(
-                        height: 3 * SizeConfig.heightSizeMultiplier,
+                        height: 2 * SizeConfig.heightSizeMultiplier,
                       ),
                       TextFormField(
-                        maxLength: 512,
-                        maxLines: 10,
+                        maxLength: 2048,
+                        maxLines: 8,
                         controller: _message,
                         onChanged: (value) {
                           setState(() => userMessage = value);
@@ -133,7 +135,7 @@ class _ContactUsState extends State<ContactUs> {
                         ),
                       ),
                       SizedBox(
-                        height: 3 * SizeConfig.heightSizeMultiplier,
+                        height: 2 * SizeConfig.heightSizeMultiplier,
                       ),
                       Align(
                         alignment: Alignment.center,
@@ -145,24 +147,25 @@ class _ContactUsState extends State<ContactUs> {
                               if (_formKey.currentState.validate()) {
                                 //send post request to server/send an email
                                 setState(() {
-                                  _name.text= "";
-                                  _message.text= "";
+                                  _name.text = "";
+                                  _message.text = "";
                                 });
-                                _sendMail.mail(username,userMessage);
+                                _sendMail.mail(username, userMessage);
                                 Fluttertoast.showToast(
-                                    msg: "Thank you for writing to us! \nWe'll get back to you in 48-72 hours",
+                                    msg:
+                                        "Thank you for writing to us! \nWe'll get back to you in 48-72 hours",
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.CENTER,
                                     timeInSecForIosWeb: 1,
                                     backgroundColor: Colors.blue,
                                     textColor: Colors.white,
-                                    fontSize: 16.0
-                                );
+                                    fontSize: 16.0);
                               }
                             },
                             color: Colors.blueAccent,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100)),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
                             child: Text(
                               'Submit',
                               style: TextStyle(

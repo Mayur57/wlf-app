@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+//      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
@@ -172,12 +172,32 @@ class _LoginPageState extends State<LoginPage> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(100)),
                                 child: !hasLoaded
-                                    ? Text(
-                                        'Loading...',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'NHGTXM',
-                                          fontSize: 17,
+                                    ? Center(
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12),
+                                              child: Container(
+                                                height: 15,
+                                                width: 15,
+                                                child: CircularProgressIndicator(
+                                                  strokeWidth: 2.5,
+                                                  valueColor:
+                                                      new AlwaysStoppedAnimation<
+                                                          Color>(Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              'Loading...',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: 'NHGTXM',
+                                                fontSize: 17,
+                                              ),
+                                            )
+                                          ],
                                         ),
                                       )
                                     : Text(

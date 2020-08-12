@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wlf/util/authentication.dart';
 import 'package:wlf/util/mail.dart';
 import 'package:wlf/util/scaler.dart';
-import 'package:wlf/screens/blog.dart';
 import 'package:get_it/get_it.dart';
 import 'config/routes.dart';
 
