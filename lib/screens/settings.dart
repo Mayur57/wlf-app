@@ -107,7 +107,7 @@ class SettingsState extends State<Settings> {
               ),
             ),
             SizedBox(
-              height: 6.71 * SizeConfig.heightSizeMultiplier,
+              height: 10 * SizeConfig.heightSizeMultiplier,
             ),
           ],
         ),
@@ -248,7 +248,7 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Mayur Bhoi',
                                   style: TextStyle(
-                                      fontSize: 28,
+                                      fontSize: 25,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
@@ -256,7 +256,7 @@ class Developers extends StatelessWidget {
                                   height: 5,
                                 ),
                                 Text(
-                                  'Flutter Developer and UI/UX',
+                                  'Flutter Developer',
                                   style: TextStyle(
                                       color: Colors.white, fontFamily: 'NHGTX'),
                                 ),
@@ -365,7 +365,7 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Aryaman Singh',
                                   style: TextStyle(
-                                      fontSize: 3.13 * SizeConfig.textSizeMultiplier,
+                                      fontSize: 25,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
@@ -373,7 +373,7 @@ class Developers extends StatelessWidget {
                                   height: 0.55 * SizeConfig.heightSizeMultiplier,
                                 ),
                                 Text(
-                                  'Flutter Developer and Backend',
+                                  'Flutter Developer',
                                   style: TextStyle(
                                       color: Colors.white, fontFamily: 'NHGTX'),
                                 ),
@@ -468,7 +468,7 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Kaustubh Sharma',
                                   style: TextStyle(
-                                      fontSize: 28,
+                                      fontSize: 25,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
@@ -476,7 +476,7 @@ class Developers extends StatelessWidget {
                                   height: 0.55 * SizeConfig.heightSizeMultiplier,
                                 ),
                                 Text(
-                                  'Flutter Developer and Backend',
+                                  'Flutter Developer',
                                   style: TextStyle(
                                       color: Colors.white, fontFamily: 'NHGTX'),
                                 ),

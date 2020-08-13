@@ -16,7 +16,7 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _MyAppBarState extends State<MyAppBar> {
-  ImageProvider logo = AssetImage(loginPageLogoImageBlue);
+  ImageProvider logo = AssetImage(loginPageLogoImage);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,9 +39,9 @@ class _MyAppBarState extends State<MyAppBar> {
                       children: <Widget>[
                         SizedBox(width: 13),
                         Image.asset(
-                          loginPageLogoImageBlack,
+                          loginPageLogoImage,
                           //loginPageLogoImageBlue,
-                            height: 65,
+                            height: 55,
                           ),
                       ],
                     ),
