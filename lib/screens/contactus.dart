@@ -178,7 +178,7 @@ class _ContactUsState extends State<ContactUs>{
                         ),
                       ),
                       SizedBox(
-                        height: 10 * SizeConfig.heightSizeMultiplier,
+                        height: 20 * SizeConfig.heightSizeMultiplier,
                       ),
                     ],
                   ),

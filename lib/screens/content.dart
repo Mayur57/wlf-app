@@ -31,11 +31,11 @@ class _ContentPageState extends State<ContentPage> {
     return Scaffold(
       appBar: AppBar(
         title:
-        Text("Whatup' Life Foundation", style: TextStyle(color: mainColor)),
+        Text("Whatup' Life Foundation", style: TextStyle(color: Color(0xFF2D2D2D), fontFamily: 'NHGTX', fontWeight: FontWeight.w100, letterSpacing: 0.5)),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFECECE4),
         elevation: 0,
-        iconTheme: IconThemeData(color: mainColor),
+        iconTheme: IconThemeData(color: Color(0xFF2D2D2D),),
       ),
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
