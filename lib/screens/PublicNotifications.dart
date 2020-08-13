@@ -36,9 +36,11 @@ class PublicNotifications extends StatelessWidget {
                                 color: mainColor.withOpacity(0.5),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 13.0, vertical: 8.0),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 13.0, vertical: 8.0),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Align(
                                       alignment: Alignment.centerLeft,
@@ -50,25 +52,28 @@ class PublicNotifications extends StatelessWidget {
                                             color: Colors.white),
                                       ),
                                     ),
+                                    Flexible(
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          _notifications.data["details"],
+                                          style: _notifications
+                                                      .data["details"].length >
+                                                  125
+                                              ? TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: 'NHGTX',
+                                                  color: Colors.white,
+                                                )
+                                              : TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: 'NHGTX',
+                                                  color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
                                     SizedBox(
                                       height: 10.0,
-                                    ),
-                                    Flexible(
-                                      child: Text(
-                                        _notifications.data["details"],
-                                        style: _notifications
-                                                    .data["details"]
-                                                    .length >
-                                                125
-                                            ? TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: 'NHGTX',
-                                                color: Colors.white)
-                                            : TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: 'NHGTX',
-                                                color: Colors.white),
-                                      ),
                                     ),
                                   ],
                                 ),
@@ -79,7 +84,7 @@ class PublicNotifications extends StatelessWidget {
                       }),
                 ],
               );
-        },
+      },
     );
   }
 }
