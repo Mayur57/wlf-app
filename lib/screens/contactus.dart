@@ -30,7 +30,7 @@ class _ContactUsState extends State<ContactUs>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90.0),
+        preferredSize: Size.fromHeight(10.02 * SizeConfig.heightSizeMultiplier),
         child: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.white,
@@ -40,11 +40,13 @@ class _ContactUsState extends State<ContactUs>{
                 alignment: Alignment.centerLeft,
                 child: Row(
                   children: <Widget>[
-                    SizedBox(width: 16),
+                    SizedBox(width: 1.78 * SizeConfig.heightSizeMultiplier),
                     Text(
                       'Contact Us',
                       style: TextStyle(
-                          fontSize: 32, fontFamily: 'NHGTXM', color: mainColor),
+                          fontSize: 3.56 * SizeConfig.heightSizeMultiplier,
+                          fontFamily: 'NHGTXM',
+                          color: mainColor),
                     ),
                   ],
                 )),
@@ -61,10 +63,10 @@ class _ContactUsState extends State<ContactUs>{
             children: <Widget>[
               Image.asset(
                 'assets/images/CU.png',
-                height: 150,
+                height: 16.70 * SizeConfig.heightSizeMultiplier,
               ),
               SizedBox(
-                height: 25,
+                height: 2.78 * SizeConfig.heightSizeMultiplier,
               ),
               Container(
                 width: 84.37 * SizeConfig.widthSizeMultiplier,
@@ -73,12 +75,12 @@ class _ContactUsState extends State<ContactUs>{
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontFamily: 'NHGTX',
-                    fontSize: 17,
+                    fontSize: 1.77 * SizeConfig.heightSizeMultiplier,
                   ),
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 3.34 * SizeConfig.heightSizeMultiplier,
               ),
               //The form
               Container(
@@ -99,10 +101,12 @@ class _ContactUsState extends State<ContactUs>{
                         style: TextStyle(
                             color: Colors.black, fontFamily: NHregular),
                         decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(10.0),
+                          contentPadding: EdgeInsets.all(
+                              1.11 * SizeConfig.heightSizeMultiplier),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            gapPadding: 2,
+                            borderRadius: BorderRadius.circular(
+                                1.11 * SizeConfig.heightSizeMultiplier),
+                            gapPadding: 0.22 * SizeConfig.heightSizeMultiplier,
                           ),
                           labelText: 'Name',
                         ),
@@ -126,10 +130,12 @@ class _ContactUsState extends State<ContactUs>{
                         style: TextStyle(
                             color: Colors.black, fontFamily: NHregular),
                         decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(10.0),
+                          contentPadding: EdgeInsets.all(1.11 *
+                              SizeConfig.heightSizeMultiplier),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            gapPadding: 2,
+                            borderRadius: BorderRadius.circular(
+                                1.11 * SizeConfig.heightSizeMultiplier),
+                            gapPadding: 0.22 * SizeConfig.heightSizeMultiplier,
                           ),
                           labelText: 'Issue',
                         ),
@@ -153,25 +159,28 @@ class _ContactUsState extends State<ContactUs>{
                                 _sendMail.mail(username, userMessage);
                                 Fluttertoast.showToast(
                                     msg:
-                                        "We'll get back to you as soon as possible!",
+                                    "Thank You for writing to us! \nWe'll get back to you as soon as possible!",
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.CENTER,
                                     timeInSecForIosWeb: 1,
                                     backgroundColor: Colors.blue,
                                     textColor: Colors.white,
-                                    fontSize: 16.0);
+                                    fontSize: 1.78 *
+                                        SizeConfig.heightSizeMultiplier);
                               }
                             },
                             color: Colors.blueAccent,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(100),
+                              borderRadius: BorderRadius.circular(
+                                  11.13 * SizeConfig.heightSizeMultiplier),
                             ),
                             child: Text(
                               'Submit',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'NHGTXM',
-                                fontSize: 17,
+                                fontSize: 1.89 *
+                                    SizeConfig.heightSizeMultiplier,
                               ),
                             ),
                           ),
@@ -196,11 +205,12 @@ class CustomDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: EdgeInsets.symmetric(
+          horizontal: 1.11 * SizeConfig.heightSizeMultiplier),
       child: Divider(
         color: mainColor,
-        height: 1,
-        thickness: 1,
+        height: 0.11 * SizeConfig.heightSizeMultiplier,
+        thickness: 0.11 * SizeConfig.heightSizeMultiplier,
       ),
     );
   }
