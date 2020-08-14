@@ -237,7 +237,7 @@ class Developers extends StatelessWidget {
             child: Card(
               color: Color(0xFF4EC8DF),
               child: Container(
-                height: 17.9 * SizeConfig.heightSizeMultiplier,
+                height: 20 * SizeConfig.heightSizeMultiplier,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -360,11 +360,11 @@ class Developers extends StatelessWidget {
 
           ///Aryaman Singh
           Padding(
-            padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
+            padding: EdgeInsets.all(0.5 * SizeConfig.heightSizeMultiplier),
             child: Card(
               color: Color(0xFF4EC8DF),
               child: Container(
-                height: 17.9 * SizeConfig.heightSizeMultiplier,
+                height: 20 * SizeConfig.heightSizeMultiplier,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -414,7 +414,7 @@ class Developers extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                          bottom: 0.89 * SizeConfig.heightSizeMultiplier),
+                          bottom: 0.5 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
@@ -473,12 +473,12 @@ class Developers extends StatelessWidget {
 
           ///Kastab
           Padding(
-            padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
+            padding: EdgeInsets.all(0.5 * SizeConfig.heightSizeMultiplier),
             child: Card(
               color: Color(
                   0xFF4EC8DF), //Lightened Main Color due to opacity incompatibilities
               child: Container(
-                height: 17.9 * SizeConfig.heightSizeMultiplier,
+                height: 20 * SizeConfig.heightSizeMultiplier,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

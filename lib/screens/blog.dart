@@ -89,16 +89,16 @@ class _BlogPageState extends State<BlogPage> {
         builder: (context, snapshot) {
           return !snapshot.hasData
               ? Center(
-            child: CircularProgressIndicator(),
-          )
+                  child: CircularProgressIndicator(),
+                )
               : Stack(
-            children: <Widget>[
-              ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  padding: EdgeInsets.only(
-                    bottom: 7.24 * SizeConfig.heightSizeMultiplier,
-                    top: 11.24 * SizeConfig.heightSizeMultiplier,
-                  ),
+                  children: <Widget>[
+                    ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        padding: EdgeInsets.only(
+                          bottom: 7.24 * SizeConfig.heightSizeMultiplier,
+                          top: 11.24 * SizeConfig.heightSizeMultiplier,
+                        ),
                         controller: _scrollController,
                         itemCount: snapshot.data.documents.length,
                         itemBuilder: (context, index) {
@@ -131,9 +131,9 @@ class _BlogPageState extends State<BlogPage> {
                                 ),
                                 margin: EdgeInsets.symmetric(
                                     vertical:
-                                    0.89 * SizeConfig.heightSizeMultiplier,
+                                        0.89 * SizeConfig.heightSizeMultiplier,
                                     horizontal:
-                                    1.11 * SizeConfig.heightSizeMultiplier),
+                                        1.11 * SizeConfig.heightSizeMultiplier),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 child: Stack(
                                   children: <Widget>[
@@ -156,13 +156,12 @@ class _BlogPageState extends State<BlogPage> {
                                       child: Text(
                                         _blog.data["title"].length > 60
                                             ? _blog.data["title"]
-                                            .substring(0, 60) +
-                                            '...'
+                                                    .substring(0, 60) +
+                                                '...'
                                             : _blog.data["title"],
                                         style: TextStyle(
                                             fontFamily: 'NHGTX',
-                                            fontSize: MediaQuery
-                                                .of(context)
+                                            fontSize: MediaQuery.of(context)
                                                     .size
                                                     .height *
                                                 0.030,
@@ -185,10 +184,9 @@ class _BlogPageState extends State<BlogPage> {
                                         "—" + _blog.data["author"],
                                         style: TextStyle(
                                             fontFamily: 'NHGTX',
-                                            fontSize: MediaQuery
-                                                .of(context)
-                                                .size
-                                                .height *
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
                                                 0.021,
                                             color:
                                                 Colors.black.withOpacity(0.35)),
