@@ -1,26 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wlf/screens/blog.dart';
-import 'package:wlf/screens/contactus.dart';
 import 'package:wlf/util/pageSwitchingHandler.dart';
-import 'package:wlf/screens/error_page.dart';
 import 'package:wlf/screens/login.dart';
 
-
-
 class RouteGenerator {
-  static Route<dynamic> generateRoute(RouteSettings settings){
-    final args = settings.arguments;
-
-    switch(settings.name) {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
       case '/test':
-        return MaterialPageRoute(builder: (_) => BottomNavigationBarController() );
+        return MaterialPageRoute(
+            builder: (_) => BottomNavigationBarController());
       case '/login':
-        return MaterialPageRoute(builder: (_) => LoginPage() );
-      case '/contact':
-        return MaterialPageRoute(builder: (_) => ContactUs() );
+        return MaterialPageRoute(builder: (_) => LoginPage());
       default:
-        return MaterialPageRoute(builder: (_) => BottomNavigationBarController() );
+        return MaterialPageRoute(
+            builder: (_) => BottomNavigationBarController());
     }
   }
 }

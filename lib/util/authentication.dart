@@ -9,7 +9,6 @@ class Services {
   final _db = Firestore.instance;
   String status;
   FirebaseUser user;
-
   Future<String> signIn(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
@@ -28,7 +27,7 @@ class Services {
 
           await tokens.updateData({
             'token': fcmToken,
-          }).then((_){
+          }).then((_) {
             print("Successful");
             print(fcmToken);
           });
@@ -50,21 +49,24 @@ class Services {
           status = "ERROR: Incorrect password.";
           break;
         case "ERROR_USER_NOT_FOUND":
-          status = "ERROR: User with this email doesn't exist. Please try again.";
+          status =
+              "ERROR: User with this email doesn't exist. Please try again.";
           break;
         case "ERROR_USER_DISABLED":
           status =
               "ERROR: User with this email has been disabled. Please contact the administrator.";
           break;
         case "ERROR_TOO_MANY_REQUESTS":
-          status = "ERROR: Too many requests. Please try again after some time.";
+          status =
+              "ERROR: Too many requests. Please try again after some time.";
           break;
         case "ERROR_OPERATION_NOT_ALLOWED":
           status =
               "ERROR: Signing in with these set of credentials is not enabled or allowed. Please contact the administrator.";
           break;
         default:
-          status = "ERROR: An unknown error has occurred. Please check your internet connection and try again.";
+          status =
+              "ERROR: An unknown error has occurred. Please check your internet connection and try again.";
       }
     }
     return status;
