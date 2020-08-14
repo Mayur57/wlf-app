@@ -42,7 +42,9 @@ class SettingsState extends State<Settings> {
                     Text(
                       'Settings',
                       style: TextStyle(
-                          fontSize: 3.58 * SizeConfig.textSizeMultiplier, fontFamily: 'NHGTXM', color: mainColor),
+                          fontSize: 3.58 * SizeConfig.textSizeMultiplier,
+                          fontFamily: 'NHGTXM',
+                          color: mainColor),
                     ),
                   ],
                 )),
@@ -70,22 +72,24 @@ class SettingsState extends State<Settings> {
             TermsAndConditions(),
             CustomDivider(),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(1.11 * SizeConfig.heightSizeMultiplier),
               child: GestureDetector(
                 onTap: _showLogoutAlertConfirmationDialog,
                 child: Card(
                   color: Colors.redAccent,
                   clipBehavior: Clip.antiAlias,
                   child: Container(
-                    height: 60,
+                    height: 6.68 * SizeConfig.heightSizeMultiplier,
                     child: Align(
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(
+                            0.89 * SizeConfig.heightSizeMultiplier),
                         child: Row(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(
+                                  0.89 * SizeConfig.heightSizeMultiplier),
                               child: Icon(
                                 Icons.power_settings_new,
                                 color: Colors.white,
@@ -94,7 +98,8 @@ class SettingsState extends State<Settings> {
                             Text(
                               "Logout",
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize:
+                                      2.22 * SizeConfig.heightSizeMultiplier,
                                   color: Colors.white,
                                   fontFamily: 'NHGTXM'),
                             ),
@@ -132,12 +137,17 @@ class AboutUs extends StatelessWidget {
       return Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
+            padding: EdgeInsets.symmetric(
+                vertical: 2.24 * SizeConfig.heightSizeMultiplier,
+                horizontal: 1.80 * SizeConfig.heightSizeMultiplier),
             child: Container(
               child: Text(
                 aboutus, //TODO: Add AboutUs
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
+                style: TextStyle(
+                  fontFamily: 'NHGTX',
+                  color: Color(0xFF5E5E5E),
+                ),
               ),
             ),
           ),
@@ -147,7 +157,7 @@ class AboutUs extends StatelessWidget {
 
     return ExpandableNotifier(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(1.11 * SizeConfig.heightSizeMultiplier),
         child: ScrollOnExpand(
           child: Card(
             clipBehavior: Clip.antiAlias,
@@ -161,17 +171,19 @@ class AboutUs extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 60,
+                    height: 6.68 * SizeConfig.heightSizeMultiplier,
                     color: mainColor.withOpacity(0.7),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(
+                          1.12 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(
+                                    0.90 * SizeConfig.heightSizeMultiplier),
                                 child: Icon(
                                   Icons.insert_emoticon,
                                   color: Colors.white,
@@ -180,7 +192,8 @@ class AboutUs extends StatelessWidget {
                               Text(
                                 "About Us",
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize:
+                                        2.25 * SizeConfig.heightSizeMultiplier,
                                     color: Colors.white,
                                     fontFamily: 'NHGTXM'),
                               ),
@@ -220,27 +233,31 @@ class Developers extends StatelessWidget {
         children: <Widget>[
           ///Mayur Bhoi
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
             child: Card(
               color: Color(0xFF4EC8DF),
               child: Container(
-                height: 160,
+                height: 17.9 * SizeConfig.heightSizeMultiplier,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(
+                          1.34 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
                             'assets/images/developers-02.png',
-                            height: 80,
+                            height: 8.91 * SizeConfig.heightSizeMultiplier,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 16.0),
+                            padding: EdgeInsets.symmetric(
+                                vertical:
+                                    0.89 * SizeConfig.heightSizeMultiplier,
+                                horizontal:
+                                    1.78 * SizeConfig.heightSizeMultiplier),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -248,12 +265,14 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Mayur Bhoi',
                                   style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 2.78 *
+                                          SizeConfig.heightSizeMultiplier,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
                                 Divider(
-                                  height: 5,
+                                  height:
+                                      0.56 * SizeConfig.heightSizeMultiplier,
                                 ),
                                 Text(
                                   'Flutter Developer',
@@ -267,7 +286,8 @@ class Developers extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
+                      padding: EdgeInsets.only(
+                          bottom: 0.89 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
@@ -277,7 +297,8 @@ class Developers extends StatelessWidget {
                               color: Colors.white,
                             ),
                             onPressed: () async {
-                              String link = "https://www.linkedin.com/in/mayur-bhoi-a60081175";
+                              String link =
+                                  "https://www.linkedin.com/in/mayur-bhoi-a60081175";
                               if (await canLaunch(link)) {
                                 await launch(link);
                               } else {
@@ -291,7 +312,8 @@ class Developers extends StatelessWidget {
                               color: Colors.white,
                             ),
                             onPressed: () async {
-                              String link = "https://www.instagram.com/mayurbhoii/";
+                              String link =
+                                  "https://www.instagram.com/mayurbhoii/";
                               if (await canLaunch(link)) {
                                 await launch(link);
                               } else {
@@ -335,29 +357,34 @@ class Developers extends StatelessWidget {
               ),
             ),
           ),
+
           ///Aryaman Singh
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
             child: Card(
               color: Color(0xFF4EC8DF),
               child: Container(
-                height: 160,
+                height: 17.9 * SizeConfig.heightSizeMultiplier,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(
+                          1.34 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
                             'assets/images/developers-01.png',
-                            height: 8.95 * SizeConfig.heightSizeMultiplier,
+                            height: 8.91 * SizeConfig.heightSizeMultiplier,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 16.0),
+                            padding: EdgeInsets.symmetric(
+                                vertical:
+                                    0.89 * SizeConfig.heightSizeMultiplier,
+                                horizontal:
+                                    1.78 * SizeConfig.heightSizeMultiplier),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -365,12 +392,14 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Aryaman Singh',
                                   style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 2.78 *
+                                          SizeConfig.heightSizeMultiplier,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
                                 Divider(
-                                  height: 0.55 * SizeConfig.heightSizeMultiplier,
+                                  height:
+                                      0.55 * SizeConfig.heightSizeMultiplier,
                                 ),
                                 Text(
                                   'Flutter Developer',
@@ -384,7 +413,8 @@ class Developers extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
+                      padding: EdgeInsets.only(
+                          bottom: 0.89 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
@@ -394,7 +424,8 @@ class Developers extends StatelessWidget {
                               color: Colors.white,
                             ),
                             onPressed: () async {
-                              String link = "https://www.linkedin.com/in/as-aryamansingh";
+                              String link =
+                                  "https://www.linkedin.com/in/as-aryamansingh";
                               if (await canLaunch(link)) {
                                 await launch(link);
                               } else {
@@ -408,7 +439,8 @@ class Developers extends StatelessWidget {
                               color: Colors.white,
                             ),
                             onPressed: () async {
-                              String link = "https://www.instagram.com/as.aryamansingh/";
+                              String link =
+                                  "https://www.instagram.com/as.aryamansingh/";
                               if (await canLaunch(link)) {
                                 await launch(link);
                               } else {
@@ -438,29 +470,35 @@ class Developers extends StatelessWidget {
               ),
             ),
           ),
-          ///Kastab
+
+          ///Kaustubh
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
             child: Card(
-              color: Color(0xFF4EC8DF), //Lightened Main Color due to opacity incompatibilities
+              color: Color(
+                  0xFF4EC8DF), //Lightened Main Color due to opacity incompatibilities
               child: Container(
-                height: 160,
+                height: 17.9 * SizeConfig.heightSizeMultiplier,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(
+                          1.34 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
                             'assets/images/developers-03.png',
-                            height: 8.95 * SizeConfig.heightSizeMultiplier,
+                            height: 8.91 * SizeConfig.heightSizeMultiplier,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 16.0),
+                            padding: EdgeInsets.symmetric(
+                                vertical:
+                                    0.89 * SizeConfig.heightSizeMultiplier,
+                                horizontal:
+                                    1.78 * SizeConfig.heightSizeMultiplier),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -468,12 +506,14 @@ class Developers extends StatelessWidget {
                                 Text(
                                   'Kaustubh Sharma',
                                   style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 2.78 *
+                                          SizeConfig.heightSizeMultiplier,
                                       color: Colors.white,
                                       fontFamily: 'NHGTXM'),
                                 ),
                                 Divider(
-                                  height: 0.55 * SizeConfig.heightSizeMultiplier,
+                                  height:
+                                      0.55 * SizeConfig.heightSizeMultiplier,
                                 ),
                                 Text(
                                   'Flutter Developer',
@@ -487,7 +527,8 @@ class Developers extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
+                      padding: EdgeInsets.only(
+                          bottom: 0.89 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
@@ -497,7 +538,8 @@ class Developers extends StatelessWidget {
                               color: Colors.white,
                             ),
                             onPressed: () async {
-                              String link = "https://www.linkedin.com/in/kaustubh-sharma-267469183";
+                              String link =
+                                  "https://www.linkedin.com/in/kaustubh-sharma-267469183";
                               if (await canLaunch(link)) {
                                 await launch(link);
                               } else {
@@ -533,7 +575,7 @@ class Developers extends StatelessWidget {
 
     return ExpandableNotifier(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(1.11 * SizeConfig.heightSizeMultiplier),
         child: ScrollOnExpand(
           child: Card(
             clipBehavior: Clip.antiAlias,
@@ -547,17 +589,19 @@ class Developers extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 60,
+                    height: 6.68 * SizeConfig.heightSizeMultiplier,
                     color: mainColor.withOpacity(0.7),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(
+                          1.11 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(
+                                    0.89 * SizeConfig.heightSizeMultiplier),
                                 child: Icon(
                                   Icons.code,
                                   color: Colors.white,
@@ -566,7 +610,8 @@ class Developers extends StatelessWidget {
                               Text(
                                 "The Developers",
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize:
+                                        2.23 * SizeConfig.heightSizeMultiplier,
                                     color: Colors.white,
                                     fontFamily: 'NHGTXM'),
                               ),
@@ -605,12 +650,17 @@ class PrivacyPolicy extends StatelessWidget {
       return Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
+            padding: EdgeInsets.symmetric(
+                vertical: 2.23 * SizeConfig.heightSizeMultiplier,
+                horizontal: 1.78 * SizeConfig.heightSizeMultiplier),
             child: Container(
               child: Text(
                 privacyPolicy,
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
+                style: TextStyle(
+                  fontFamily: 'NHGTX',
+                  color: Color(0xFF5E5E5E),
+                ),
               ),
             ),
           ),
@@ -620,7 +670,7 @@ class PrivacyPolicy extends StatelessWidget {
 
     return ExpandableNotifier(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(1.11 * SizeConfig.heightSizeMultiplier),
         child: ScrollOnExpand(
           child: Card(
             clipBehavior: Clip.antiAlias,
@@ -634,17 +684,19 @@ class PrivacyPolicy extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 60,
+                    height: 6.68 * SizeConfig.heightSizeMultiplier,
                     color: mainColor.withOpacity(0.7),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(
+                          1.11 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(
+                                    0.89 * SizeConfig.heightSizeMultiplier),
                                 child: Icon(
                                   Icons.assignment_turned_in,
                                   color: Colors.white,
@@ -653,7 +705,8 @@ class PrivacyPolicy extends StatelessWidget {
                               Text(
                                 "Privacy Policy",
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize:
+                                        2.22 * SizeConfig.heightSizeMultiplier,
                                     color: Colors.white,
                                     fontFamily: 'NHGTXM'),
                               ),
@@ -692,12 +745,17 @@ class TermsAndConditions extends StatelessWidget {
       return Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
+            padding: EdgeInsets.symmetric(
+                vertical: 2.23 * SizeConfig.heightSizeMultiplier,
+                horizontal: 1.78 * SizeConfig.heightSizeMultiplier),
             child: Container(
               child: Text(
                 t_and_c,
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E),),
+                style: TextStyle(
+                  fontFamily: 'NHGTX',
+                  color: Color(0xFF5E5E5E),
+                ),
               ),
             ),
           ),
@@ -707,7 +765,7 @@ class TermsAndConditions extends StatelessWidget {
 
     return ExpandableNotifier(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(1.11 * SizeConfig.heightSizeMultiplier),
         child: ScrollOnExpand(
           child: Card(
             clipBehavior: Clip.antiAlias,
@@ -721,17 +779,19 @@ class TermsAndConditions extends StatelessWidget {
                     hasIcon: false,
                   ),
                   header: Container(
-                    height: 60,
+                    height: 6.68 * SizeConfig.heightSizeMultiplier,
                     color: mainColor.withOpacity(0.7),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(
+                          1.11 * SizeConfig.heightSizeMultiplier),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(
+                                    0.89 * SizeConfig.heightSizeMultiplier),
                                 child: Icon(
                                   Icons.assignment,
                                   color: Colors.white,
@@ -740,7 +800,8 @@ class TermsAndConditions extends StatelessWidget {
                               Text(
                                 "Terms and Conditions",
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize:
+                                        2.23 * SizeConfig.heightSizeMultiplier,
                                     color: Colors.white,
                                     fontFamily: 'NHGTXM'),
                               ),
@@ -814,7 +875,8 @@ class LogoutAlertConfirmation extends StatelessWidget {
             prefs.remove('email');
             prefs.remove('user_uid');
             await FirebaseAuth.instance.signOut().then((value) {
-              Navigator.of(context).pushReplacementNamed('/login');
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/login', (Route<dynamic> route) => false);
             });
           },
         ),
@@ -827,77 +889,10 @@ class CustomDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      padding: EdgeInsets.symmetric(
+          horizontal: 2.78 * SizeConfig.heightSizeMultiplier),
       child: Divider(
-        height: 1,
-      ),
-    );
-  }
-}
-
-class DarkModeToggle extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return DarkModeToggleState();
-  }
-}
-
-class DarkModeToggleState extends State<DarkModeToggle> {
-  bool isDark = true;
-
-  _toggleTheme() {
-    if (!isDark) {
-      print("Dark theme disabled");
-    } else {
-      print("Dark theme enabled");
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Container(
-        height: 7.83 * SizeConfig.heightSizeMultiplier,
-        child: Card(
-          color: mainColor.withOpacity(0.7),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.brightness_6,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      "Dark Mode",
-                      style: TextStyle(
-                          fontSize: 2.23 * SizeConfig.textSizeMultiplier,
-                          color: Colors.white,
-                          fontFamily: 'NHGTXM'),
-                    ),
-                  ],
-                ),
-                Switch(
-                  activeColor: Colors.white,
-                  value: isDark,
-                  onChanged: (bool toggle) {
-                    setState(() {
-                      isDark = toggle;
-                      _toggleTheme();
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
+        height: 0.11 * SizeConfig.heightSizeMultiplier,
       ),
     );
   }
