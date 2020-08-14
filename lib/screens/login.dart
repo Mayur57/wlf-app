@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
@@ -30,226 +31,258 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        child: Scaffold(
 //      resizeToAvoidBottomPadding: false,
-      backgroundColor: Colors.white,
-      body: Stack(
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          backgroundColor: Colors.white,
+          body: Stack(
             children: <Widget>[
-              Container(
-                height: 22.27 * SizeConfig.heightSizeMultiplier,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/images/header-01.png'),
-                  ),
-                ),
-              ),
-              Transform.rotate(
-                angle: pi,
-                child: Container(
-                  height: 22.27 * SizeConfig.heightSizeMultiplier,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/header-01.png'),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    height: 22.27 * SizeConfig.heightSizeMultiplier,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/images/header-01.png'),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ],
-          ),
-          SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 24.63 * SizeConfig.heightSizeMultiplier,
-                  ),
-                  Image.asset(
-                    loginPageLogoImage,
-                    width: 58.13 * SizeConfig.widthSizeMultiplier,
-                  ),
-                  SizedBox(
-                    height: 2.23 * SizeConfig.heightSizeMultiplier,
-                  ),
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                        fontFamily: 'NHGTX',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 4.45 * SizeConfig.heightSizeMultiplier),
-                  ),
-                  Text(
-                    "Login to proceed further",
-                    style: TextStyle(
-                        fontFamily: 'NHGTX',
-                        fontSize: 2.23 * SizeConfig.heightSizeMultiplier),
-                  ),
-                  Container(
-                    width: 84.37 * SizeConfig.widthSizeMultiplier,
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 5 * SizeConfig.heightSizeMultiplier,
-                          ),
-                          TextFormField(
-                            controller: _email,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Enter an email';
-                              } else if ((!value.contains('@')) ||
-                                  (!value.contains('.com'))) {
-                                return 'Enter a valid email';
-                              }
-                              return null;
-                            },
-                            keyboardType: TextInputType.emailAddress,
-                            obscureText: false,
-                            style: TextStyle(
-                                color: Colors.black, fontFamily: 'NHGTX'),
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(
-                                  1.11 * SizeConfig.heightSizeMultiplier),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(
-                                    1.11 * SizeConfig.heightSizeMultiplier),
-                                gapPadding:
-                                    0.22 * SizeConfig.heightSizeMultiplier,
-                              ),
-                              labelText: 'Email ID',
-                            ),
-                            onChanged: (value) {
-                              setState(() => userEmail = value);
-                            },
-                          ),
-                          SizedBox(
-                            height: 3 * SizeConfig.heightSizeMultiplier,
-                          ),
-                          TextFormField(
-                            controller: _pass,
-                            onChanged: (value) {
-                              setState(() => userPassword = value);
-                            },
-                            validator: (value) =>
-                                value.length < 6 ? 'Incorrect Password' : null,
-                            keyboardType: TextInputType.emailAddress,
-                            obscureText: true,
-                            style: TextStyle(
-                                color: Colors.black, fontFamily: 'NHGTX'),
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(
-                                  1.11 * SizeConfig.heightSizeMultiplier),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(
-                                    1.11 * SizeConfig.heightSizeMultiplier),
-                                gapPadding:
-                                0.22 * SizeConfig.heightSizeMultiplier,
-                              ),
-                              labelText: 'Password',
-                            ),
-                          ),
-                          SizedBox(
-                            height: 3.5 * SizeConfig.heightSizeMultiplier,
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: ButtonTheme(
-                              minWidth: 84.37 * SizeConfig.widthSizeMultiplier,
-                              height: 5.2 * SizeConfig.heightSizeMultiplier,
-                              child: FlatButton(
-                                onPressed: () {
-                                  if (_formKey.currentState.validate()) {
-                                    setState(() {
-                                      _email.text = "";
-                                      _pass.text = "";
-                                    });
-                                    _loaderFlagToggle();
-                                    _login();
-                                  }
-                                },
-                                color: Colors.blueAccent,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(11.13 *
-                                        SizeConfig.heightSizeMultiplier)),
-                                child: !hasLoaded
-                                    ? Center(
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 0.89 *
-                                                SizeConfig
-                                                    .heightSizeMultiplier,
-                                            horizontal: 1.34 *
-                                                SizeConfig
-                                                    .heightSizeMultiplier),
-                                        child: Container(
-                                          height: 1.67 *
-                                              SizeConfig
-                                                  .heightSizeMultiplier,
-                                          width: 1.67 *
-                                              SizeConfig
-                                                  .heightSizeMultiplier,
-                                          child:
-                                          CircularProgressIndicator(
-                                            strokeWidth: 0.27 *
-                                                SizeConfig
-                                                    .heightSizeMultiplier,
-                                            valueColor:
-                                            new AlwaysStoppedAnimation<
-                                                Color>(Colors.white),
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        'Loading...',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'NHGTXM',
-                                          fontSize: 1.89 *
-                                              SizeConfig
-                                                  .heightSizeMultiplier,
-                                        ),
-                                            )
-                                          ],
-                                        ),
-                                      )
-                                    : Text(
-                                        'Login',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'NHGTXM',
-                                          fontSize: 1.89 *
-                                              SizeConfig.heightSizeMultiplier,
-                                        ),
-                                      ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5 * SizeConfig.heightSizeMultiplier,
-                          ),
-                        ],
+                  Transform.rotate(
+                    angle: pi,
+                    child: Container(
+                      height: 22.27 * SizeConfig.heightSizeMultiplier,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/images/header-01.png'),
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-            ),
+              SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 24.63 * SizeConfig.heightSizeMultiplier,
+                      ),
+                      Image.asset(
+                        loginPageLogoImage,
+                        width: 58.13 * SizeConfig.widthSizeMultiplier,
+                      ),
+                      SizedBox(
+                        height: 2.23 * SizeConfig.heightSizeMultiplier,
+                      ),
+                      Text(
+                        "Welcome",
+                        style: TextStyle(
+                            fontFamily: 'NHGTX',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 4.45 * SizeConfig.heightSizeMultiplier),
+                      ),
+                      Text(
+                        "Login to proceed further",
+                        style: TextStyle(
+                            fontFamily: 'NHGTX',
+                            fontSize: 2.23 * SizeConfig.heightSizeMultiplier),
+                      ),
+                      Container(
+                        width: 84.37 * SizeConfig.widthSizeMultiplier,
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(
+                                height: 5 * SizeConfig.heightSizeMultiplier,
+                              ),
+                              TextFormField(
+                                controller: _email,
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Enter an email';
+                                  } else if ((!value.contains('@')) ||
+                                      (!value.contains('.com'))) {
+                                    return 'Enter a valid email';
+                                  }
+                                  return null;
+                                },
+                                keyboardType: TextInputType.emailAddress,
+                                obscureText: false,
+                                style: TextStyle(
+                                    color: Colors.black, fontFamily: 'NHGTX'),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(
+                                      1.11 * SizeConfig.heightSizeMultiplier),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        1.11 * SizeConfig.heightSizeMultiplier),
+                                    gapPadding:
+                                        0.22 * SizeConfig.heightSizeMultiplier,
+                                  ),
+                                  labelText: 'Email ID',
+                                ),
+                                onChanged: (value) {
+                                  setState(() => userEmail = value);
+                                },
+                              ),
+                              SizedBox(
+                                height: 3 * SizeConfig.heightSizeMultiplier,
+                              ),
+                              TextFormField(
+                                controller: _pass,
+                                onChanged: (value) {
+                                  setState(() => userPassword = value);
+                                },
+                                validator: (value) => value.length < 6
+                                    ? 'Incorrect Password'
+                                    : null,
+                                keyboardType: TextInputType.emailAddress,
+                                obscureText: true,
+                                style: TextStyle(
+                                    color: Colors.black, fontFamily: 'NHGTX'),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(
+                                      1.11 * SizeConfig.heightSizeMultiplier),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        1.11 * SizeConfig.heightSizeMultiplier),
+                                    gapPadding:
+                                        0.22 * SizeConfig.heightSizeMultiplier,
+                                  ),
+                                  labelText: 'Password',
+                                ),
+                              ),
+                              SizedBox(
+                                height: 3.5 * SizeConfig.heightSizeMultiplier,
+                              ),
+                              Align(
+                                alignment: Alignment.center,
+                                child: ButtonTheme(
+                                  minWidth:
+                                      84.37 * SizeConfig.widthSizeMultiplier,
+                                  height: 5.2 * SizeConfig.heightSizeMultiplier,
+                                  child: FlatButton(
+                                    onPressed: () {
+                                      if (_formKey.currentState.validate()) {
+                                        setState(() {
+                                          _email.text = "";
+                                          _pass.text = "";
+                                        });
+                                        _loaderFlagToggle();
+                                        _login();
+                                      }
+                                    },
+                                    color: Colors.blueAccent,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            11.13 *
+                                                SizeConfig
+                                                    .heightSizeMultiplier)),
+                                    child: !hasLoaded
+                                        ? Center(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical: 0.89 *
+                                                          SizeConfig
+                                                              .heightSizeMultiplier,
+                                                      horizontal: 1.34 *
+                                                          SizeConfig
+                                                              .heightSizeMultiplier),
+                                                  child: Container(
+                                                    height: 1.67 *
+                                                        SizeConfig
+                                                            .heightSizeMultiplier,
+                                                    width: 1.67 *
+                                                        SizeConfig
+                                                            .heightSizeMultiplier,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      strokeWidth: 0.27 *
+                                                          SizeConfig
+                                                              .heightSizeMultiplier,
+                                                      valueColor:
+                                                          new AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                              Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Loading...',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: 'NHGTXM',
+                                                    fontSize: 1.89 *
+                                                        SizeConfig
+                                                            .heightSizeMultiplier,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        : Text(
+                                            'Login',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontFamily: 'NHGTXM',
+                                              fontSize: 1.89 *
+                                                  SizeConfig
+                                                      .heightSizeMultiplier,
+                                            ),
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5 * SizeConfig.heightSizeMultiplier,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ),
+        onWillPop: _onWillPop);
+  }
+
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: new Text('Are you sure?'),
+            content: new Text('Do you want to exit the App ?'),
+            actions: <Widget>[
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('No'),
+              ),
+              new FlatButton(
+                onPressed: () {
+                  Future.value(true);
+                  SystemNavigator.pop();
+                },
+                child: new Text('Yes'),
+              ),
+            ],
+          ),
+        )) ??
+        false;
   }
 
   _login() async {
