@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wlf/res/strings.dart';
 import 'package:wlf/util/authentication.dart';
 import '../util/scaler.dart';
-import '../util/scaler.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -40,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
-                height: 200,
+                height: 22.27 * SizeConfig.heightSizeMultiplier,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
@@ -51,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
               Transform.rotate(
                 angle: pi,
                 child: Container(
-                  height: 200,
+                  height: 22.27 * SizeConfig.heightSizeMultiplier,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
@@ -76,18 +75,20 @@ class _LoginPageState extends State<LoginPage> {
                     width: 58.13 * SizeConfig.widthSizeMultiplier,
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 2.23 * SizeConfig.heightSizeMultiplier,
                   ),
                   Text(
                     "Welcome",
                     style: TextStyle(
                         fontFamily: 'NHGTX',
                         fontWeight: FontWeight.bold,
-                        fontSize: 40),
+                        fontSize: 4.45 * SizeConfig.heightSizeMultiplier),
                   ),
                   Text(
                     "Login to proceed further",
-                    style: TextStyle(fontFamily: 'NHGTX', fontSize: 20),
+                    style: TextStyle(
+                        fontFamily: 'NHGTX',
+                        fontSize: 2.23 * SizeConfig.heightSizeMultiplier),
                   ),
                   Container(
                     width: 84.37 * SizeConfig.widthSizeMultiplier,
@@ -115,10 +116,13 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(
                                 color: Colors.black, fontFamily: 'NHGTX'),
                             decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(10.0),
+                              contentPadding: EdgeInsets.all(
+                                  1.11 * SizeConfig.heightSizeMultiplier),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                gapPadding: 2,
+                                borderRadius: BorderRadius.circular(
+                                    1.11 * SizeConfig.heightSizeMultiplier),
+                                gapPadding:
+                                    0.22 * SizeConfig.heightSizeMultiplier,
                               ),
                               labelText: 'Email ID',
                             ),
@@ -141,10 +145,13 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(
                                 color: Colors.black, fontFamily: 'NHGTX'),
                             decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(10.0),
+                              contentPadding: EdgeInsets.all(
+                                  1.11 * SizeConfig.heightSizeMultiplier),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                gapPadding: 2,
+                                borderRadius: BorderRadius.circular(
+                                    1.11 * SizeConfig.heightSizeMultiplier),
+                                gapPadding:
+                                0.22 * SizeConfig.heightSizeMultiplier,
                               ),
                               labelText: 'Password',
                             ),
@@ -170,32 +177,49 @@ class _LoginPageState extends State<LoginPage> {
                                 },
                                 color: Colors.blueAccent,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100)),
+                                    borderRadius: BorderRadius.circular(11.13 *
+                                        SizeConfig.heightSizeMultiplier)),
                                 child: !hasLoaded
                                     ? Center(
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Padding(
-                                              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12),
-                                              child: Container(
-                                                height: 15,
-                                                width: 15,
-                                                child: CircularProgressIndicator(
-                                                  strokeWidth: 2.5,
-                                                  valueColor:
-                                                      new AlwaysStoppedAnimation<
-                                                          Color>(Colors.white),
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              'Loading...',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: 'NHGTXM',
-                                                fontSize: 17,
-                                              ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 0.89 *
+                                                SizeConfig
+                                                    .heightSizeMultiplier,
+                                            horizontal: 1.34 *
+                                                SizeConfig
+                                                    .heightSizeMultiplier),
+                                        child: Container(
+                                          height: 1.67 *
+                                              SizeConfig
+                                                  .heightSizeMultiplier,
+                                          width: 1.67 *
+                                              SizeConfig
+                                                  .heightSizeMultiplier,
+                                          child:
+                                          CircularProgressIndicator(
+                                            strokeWidth: 0.27 *
+                                                SizeConfig
+                                                    .heightSizeMultiplier,
+                                            valueColor:
+                                            new AlwaysStoppedAnimation<
+                                                Color>(Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'Loading...',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'NHGTXM',
+                                          fontSize: 1.89 *
+                                              SizeConfig
+                                                  .heightSizeMultiplier,
+                                        ),
                                             )
                                           ],
                                         ),
@@ -205,7 +229,8 @@ class _LoginPageState extends State<LoginPage> {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontFamily: 'NHGTXM',
-                                          fontSize: 17,
+                                          fontSize: 1.89 *
+                                              SizeConfig.heightSizeMultiplier,
                                         ),
                                       ),
                               ),
@@ -237,7 +262,7 @@ class _LoginPageState extends State<LoginPage> {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.blue.withOpacity(0.3),
         textColor: Colors.white,
-        fontSize: 16.0,
+        fontSize: 1.78 * SizeConfig.heightSizeMultiplier,
       );
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('email', userEmail);
