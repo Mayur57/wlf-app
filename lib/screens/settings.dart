@@ -144,7 +144,10 @@ class AboutUs extends StatelessWidget {
               child: Text(
                 aboutUs, //TODO: Add AboutUs
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E), fontSize: 15),
+                style: TextStyle(
+                    fontFamily: 'NHGTX',
+                    color: Color(0xFF5E5E5E),
+                    fontSize: 1.67 * SizeConfig.heightSizeMultiplier),
               ),
             ),
           ),
@@ -354,6 +357,7 @@ class Developers extends StatelessWidget {
               ),
             ),
           ),
+
           ///Aryaman Singh
           Padding(
             padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
@@ -466,6 +470,7 @@ class Developers extends StatelessWidget {
               ),
             ),
           ),
+
           ///Kastab
           Padding(
             padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
