@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:wlf/screens/content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:wlf/util/scaler.dart';
 import 'package:wlf/widgets/appBar.dart';
 
 class BlogPage extends StatefulWidget {
@@ -53,7 +54,8 @@ class _BlogPageState extends State<BlogPage> {
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
               ScrollDirection.reverse &&
-          _scrollController.position.pixels > 100) {
+          _scrollController.position.pixels >
+              11.14 * SizeConfig.heightSizeMultiplier) {
         if (!isScrollingDown) {
           setState(() {
             isScrollingDown = true;
@@ -80,20 +82,23 @@ class _BlogPageState extends State<BlogPage> {
       backgroundColor: Colors.white,
       appBar: MyAppBar(_visible),
       body: StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance.collection("blogs").snapshots(),
+        stream: Firestore.instance
+            .collection("blogs")
+            .orderBy('id', descending: true)
+            .snapshots(),
         builder: (context, snapshot) {
           return !snapshot.hasData
               ? Center(
-                  child: CircularProgressIndicator(),
-                )
+            child: CircularProgressIndicator(),
+          )
               : Stack(
-                  children: <Widget>[
-                    ListView.builder(
-                        physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.only(
-                          bottom: 65.0,
-                          top: 110,
-                        ),
+            children: <Widget>[
+              ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.only(
+                    bottom: 7.24 * SizeConfig.heightSizeMultiplier,
+                    top: 11.24 * SizeConfig.heightSizeMultiplier,
+                  ),
                         controller: _scrollController,
                         itemCount: snapshot.data.documents.length,
                         itemBuilder: (context, index) {
@@ -117,39 +122,47 @@ class _BlogPageState extends State<BlogPage> {
                               );
                             },
                             child: Container(
-                              height: 170,
+                              height: 18.93 * SizeConfig.heightSizeMultiplier,
                               child: Card(
                                 elevation: 2,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6.0),
+                                  borderRadius: BorderRadius.circular(
+                                      0.67 * SizeConfig.heightSizeMultiplier),
                                 ),
                                 margin: EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 10),
+                                    vertical:
+                                    0.89 * SizeConfig.heightSizeMultiplier,
+                                    horizontal:
+                                    1.11 * SizeConfig.heightSizeMultiplier),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 child: Stack(
                                   children: <Widget>[
                                     Container(
-                                      height: 170.0,
+                                      height: 18.93 *
+                                          SizeConfig.heightSizeMultiplier,
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
                                         color: colors[j],
                                       ),
                                     ),
                                     Container(
-                                      height: 170,
+                                      height: 18.93 *
+                                          SizeConfig.heightSizeMultiplier,
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 20.0, vertical: 12.0),
+                                          horizontal: 2.23 *
+                                              SizeConfig.heightSizeMultiplier,
+                                          vertical: 1.34 *
+                                              SizeConfig.heightSizeMultiplier),
                                       alignment: Alignment.topLeft,
                                       child: Text(
                                         _blog.data["title"].length > 60
                                             ? _blog.data["title"]
-                                                    .substring(0, 60) +
-                                                '...'
+                                            .substring(0, 60) +
+                                            '...'
                                             : _blog.data["title"],
                                         style: TextStyle(
                                             fontFamily: 'NHGTX',
-                                            fontSize: MediaQuery.of(context)
+                                            fontSize: MediaQuery
+                                                .of(context)
                                                     .size
                                                     .height *
                                                 0.030,
@@ -160,17 +173,22 @@ class _BlogPageState extends State<BlogPage> {
                                       ),
                                     ),
                                     Container(
-                                      height: 170,
+                                      height: 18.93 *
+                                          SizeConfig.heightSizeMultiplier,
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 20.0, vertical: 12.0),
+                                          horizontal: 2.23 *
+                                              SizeConfig.heightSizeMultiplier,
+                                          vertical: 1.34 *
+                                              SizeConfig.heightSizeMultiplier),
                                       alignment: Alignment.bottomRight,
                                       child: Text(
                                         "—" + _blog.data["author"],
                                         style: TextStyle(
                                             fontFamily: 'NHGTX',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
+                                            fontSize: MediaQuery
+                                                .of(context)
+                                                .size
+                                                .height *
                                                 0.021,
                                             color:
                                                 Colors.black.withOpacity(0.35)),
