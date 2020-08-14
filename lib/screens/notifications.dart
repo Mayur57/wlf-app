@@ -1,12 +1,12 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:wlf/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wlf/res/color.dart';
 import 'package:wlf/screens/PersonalNotifications.dart';
 import 'package:wlf/screens/PublicNotifications.dart';
+import 'package:wlf/util/scaler.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key key}) : super(key: key);
@@ -19,14 +19,14 @@ class _NotificationScreenState extends State<NotificationScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   ScrollController _scrollViewController;
-  //String user_id;
+  String user_id;
 
   @override
   void initState() {
     super.initState();
     _scrollViewController = new ScrollController();
     _tabController = new TabController(vsync: this, length: 2);
-    //UserId();
+    UserId();
   }
 
   @override
@@ -34,6 +34,13 @@ class _NotificationScreenState extends State<NotificationScreen>
     _scrollViewController.dispose();
     _tabController.dispose();
     super.dispose();
+  }
+
+  UserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      user_id = prefs.getString('user_uid');
+    });
   }
 
   @override
@@ -46,19 +53,22 @@ class _NotificationScreenState extends State<NotificationScreen>
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverPadding(
-              padding: EdgeInsets.only(top: 16.0),
+              padding:
+                  EdgeInsets.only(top: 1.56 * SizeConfig.heightSizeMultiplier),
               sliver: new SliverAppBar(
                 title: new Text(
                   'Notifications',
                   style: TextStyle(
-                      fontSize: 32, fontFamily: 'NHGTXM', color: mainColor),
+                      fontSize: 3.56 * SizeConfig.heightSizeMultiplier,
+                      fontFamily: 'NHGTXM',
+                      color: mainColor),
                 ),
                 backgroundColor: Colors.white,
                 automaticallyImplyLeading: false,
                 pinned: true,
                 floating: true,
                 forceElevated: innerBoxIsScrolled,
-                titleSpacing: 16,
+                titleSpacing: 1.78 * SizeConfig.heightSizeMultiplier,
                 bottom: new TabBar(
                   tabs: <Tab>[
                     new Tab(
@@ -81,7 +91,7 @@ class _NotificationScreenState extends State<NotificationScreen>
         },
         body: new TabBarView(
           children: <Widget>[
-            new PersonalNotifications(),
+            new PersonalNotifications(user_id),
             new PublicNotifications(),
           ],
           controller: _tabController,
