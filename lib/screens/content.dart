@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wlf/res/color.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:wlf/util/scaler.dart';
 
 class ContentPage extends StatefulWidget {
   final String url;
@@ -30,12 +30,18 @@ class _ContentPageState extends State<ContentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-        Text("Whatup' Life Foundation", style: TextStyle(color: Color(0xFF2D2D2D), fontFamily: 'NHGTX', fontWeight: FontWeight.w100, letterSpacing: 0.5)),
+        title: Text("Whatup' Life Foundation",
+            style: TextStyle(
+                color: Color(0xFF2D2D2D),
+                fontFamily: 'NHGTX',
+                fontWeight: FontWeight.w100,
+                letterSpacing: 0.05 * SizeConfig.heightSizeMultiplier)),
         centerTitle: true,
         backgroundColor: Color(0xFFECECE4),
         elevation: 0,
-        iconTheme: IconThemeData(color: Color(0xFF2D2D2D),),
+        iconTheme: IconThemeData(
+          color: Color(0xFF2D2D2D),
+        ),
       ),
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
@@ -49,7 +55,7 @@ class _ContentPageState extends State<ContentPage> {
                 width: double.infinity,
                 height: double.infinity),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
             child: Container(
               height: double.infinity,
               width: double.infinity,
