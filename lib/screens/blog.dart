@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -120,10 +119,9 @@ class _BlogPageState extends State<BlogPage> {
                             child: Container(
                               height: 170,
                               child: Card(
-                                //shadowColor: Colors.blue,
                                 elevation: 2,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(0.0),
+                                  borderRadius: BorderRadius.circular(6.0),
                                 ),
                                 margin: EdgeInsets.symmetric(
                                     vertical: 8, horizontal: 10),
@@ -132,36 +130,12 @@ class _BlogPageState extends State<BlogPage> {
                                   children: <Widget>[
                                     Container(
                                       height: 170.0,
-                                      //margin: EdgeInsets.all(2.0),
                                       decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         color: colors[j],
-                                        // image: DecorationImage(
-                                        //   fit: BoxFit.fill,
-                                        //   image: CachedNetworkImageProvider(
-                                        //       _blog.data["image_url"]),
-                                        // ),
                                       ),
                                     ),
-                                    // Container(
-                                    //   height: 390,
-                                    //   padding: EdgeInsets.all(10.0),
-                                    //   decoration: BoxDecoration(
-                                    //     borderRadius:
-                                    //         BorderRadius.circular(8.0),
-                                    //     color: Colors.blue,
-                                    //     gradient: LinearGradient(
-                                    //       begin: FractionalOffset.topCenter,
-                                    //       end: FractionalOffset.bottomCenter,
-                                    //       colors: [
-                                    //         Colors.black.withOpacity(0.27),
-                                    //         Colors.black.withOpacity(0.27),
-                                    //       ],
-                                    //       stops: [0.0, 1.0],
-                                    //     ),
-                                    //   ),
-                                    // ),
                                     Container(
                                       height: 170,
                                       padding: EdgeInsets.symmetric(
@@ -181,7 +155,7 @@ class _BlogPageState extends State<BlogPage> {
                                                 0.030,
                                             fontWeight: FontWeight.bold,
                                             color:
-                                                Colors.black.withOpacity(0.4)),
+                                                Colors.black.withOpacity(0.3)),
                                         textAlign: TextAlign.left,
                                       ),
                                     ),
@@ -191,7 +165,7 @@ class _BlogPageState extends State<BlogPage> {
                                           horizontal: 20.0, vertical: 12.0),
                                       alignment: Alignment.bottomRight,
                                       child: Text(
-                                        "- " + _blog.data["author"],
+                                        "—" + _blog.data["author"],
                                         style: TextStyle(
                                             fontFamily: 'NHGTX',
                                             fontSize: MediaQuery.of(context)
@@ -199,7 +173,7 @@ class _BlogPageState extends State<BlogPage> {
                                                     .height *
                                                 0.021,
                                             color:
-                                                Colors.black.withOpacity(0.4)),
+                                                Colors.black.withOpacity(0.35)),
                                         textAlign: TextAlign.center,
                                       ),
                                     ),

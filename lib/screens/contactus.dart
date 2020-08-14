@@ -69,11 +69,11 @@ class _ContactUsState extends State<ContactUs>{
               Container(
                 width: 84.37 * SizeConfig.widthSizeMultiplier,
                 child: Text(
-                  lipsum,
+                  contactUs,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontFamily: 'NHGTX',
-                    fontSize: 15,
+                    fontSize: 17,
                   ),
                 ),
               ),
@@ -153,7 +153,7 @@ class _ContactUsState extends State<ContactUs>{
                                 _sendMail.mail(username, userMessage);
                                 Fluttertoast.showToast(
                                     msg:
-                                        "Thank you for writing to us! \nWe'll get back to you in 48-72 hours",
+                                        "We'll get back to you as soon as possible!",
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.CENTER,
                                     timeInSecForIosWeb: 1,

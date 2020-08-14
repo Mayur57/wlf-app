@@ -63,9 +63,9 @@ class SettingsState extends State<Settings> {
             SizedBox(
               height: 2.23 * SizeConfig.heightSizeMultiplier,
             ),
-            AboutUs(),
-            CustomDivider(),
             Developers(),
+            CustomDivider(),
+            AboutUs(),
             CustomDivider(),
             PrivacyPolicy(),
             CustomDivider(),
@@ -142,12 +142,9 @@ class AboutUs extends StatelessWidget {
                 horizontal: 1.80 * SizeConfig.heightSizeMultiplier),
             child: Container(
               child: Text(
-                aboutus, //TODO: Add AboutUs
+                aboutUs, //TODO: Add AboutUs
                 textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontFamily: 'NHGTX',
-                  color: Color(0xFF5E5E5E),
-                ),
+                style: TextStyle(fontFamily: 'NHGTX', color: Color(0xFF5E5E5E), fontSize: 15),
               ),
             ),
           ),
@@ -357,7 +354,6 @@ class Developers extends StatelessWidget {
               ),
             ),
           ),
-
           ///Aryaman Singh
           Padding(
             padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
@@ -470,8 +466,7 @@ class Developers extends StatelessWidget {
               ),
             ),
           ),
-
-          ///Kaustubh
+          ///Kastab
           Padding(
             padding: EdgeInsets.all(0.89 * SizeConfig.heightSizeMultiplier),
             child: Card(
