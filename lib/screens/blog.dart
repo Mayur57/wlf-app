@@ -18,21 +18,24 @@ class _BlogPageState extends State<BlogPage> {
   final List<Color> colors = <Color>[
     Color(0xffB5EAD6),
     Color(0xffFFDAC0),
+
     Color(0xff00BEFC).withOpacity(0.5),
     Color(0xffF28686),
     Color(0xff60DCB7),
     Color(0xffF5E6BF),
     Color(0xffFEB7B1),
+
     Color(0xff60A0CF),
     Color(0xffFF9AA2),
     Color(0xffEEBC8F),
     Color(0xffF18DB7),
     Color(0xff6CD0D0),
+
     Color(0xffD78EF0),
     Color(0xffE2F0CC),
     Color(0xffF28686),
     Color(0xff7B78F2),
-    Color(0xffC7CEEA)
+    Color(0xffC7CEEA),
   ];
   bool _visible = true;
   bool isScrollingDown = false;
@@ -104,12 +107,7 @@ class _BlogPageState extends State<BlogPage> {
                         controller: _scrollController,
                         itemCount: snapshot.data.documents.length,
                         itemBuilder: (context, index) {
-                          //TODO: Error here
-                          if (index % 16 == 0) {
-                            j = 0;
-                          } else {
-                            j = index;
-                          }
+                          j = index % 17;
                           DocumentSnapshot _blog =
                               snapshot.data.documents[index];
                           return GestureDetector(
