@@ -32,7 +32,7 @@ class _BlogPageState extends State<BlogPage> {
     Color(0xffE2F0CC),
     Color(0xffF28686),
     Color(0xff7B78F2),
-    Color(0xffC7CEEA),
+    Color(0xffC7CEEA)
   ];
   bool _visible = true;
   bool isScrollingDown = false;
@@ -43,6 +43,8 @@ class _BlogPageState extends State<BlogPage> {
     super.initState();
     myScroll();
   }
+
+  int j;
 
   @override
   void dispose() {
@@ -102,14 +104,14 @@ class _BlogPageState extends State<BlogPage> {
                         controller: _scrollController,
                         itemCount: snapshot.data.documents.length,
                         itemBuilder: (context, index) {
-                          DocumentSnapshot _blog =
-                              snapshot.data.documents[index];
-                          int j;
-                          if (index % 17 == 0) {
+                          //TODO: Error here
+                          if (index % 16 == 0) {
                             j = 0;
                           } else {
                             j = index;
                           }
+                          DocumentSnapshot _blog =
+                              snapshot.data.documents[index];
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(
