@@ -1,44 +1,34 @@
 {
   "project_info": {
-
-    "project_number": "1079927007382",
-    "firebase_url": "https://whatup--life-foundation.firebaseio.com",
-    "project_id": "whatup--life-foundation",
-    "storage_bucket": "whatup--life-foundation.appspot.com"
-
+    "project_number": "1006450807382",
+    "firebase_url": "https://wlf-app.firebaseio.com",
+    "project_id": "wlf-app",
+    "storage_bucket": "wlf-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-
-        "mobilesdk_app_id": "1:1079927007382:android:2b5f02e8ed797e813e3ab7",
-
+        "mobilesdk_app_id": "1:1006450807382:android:56a0c4baf2327b4adce1f7",
         "android_client_info": {
           "package_name": "com.projectathena.wlf"
         }
       },
       "oauth_client": [
         {
-
-          "client_id": "1079927007382-iv5medvubktefgj6i8netgll74s5pqfv.apps.googleusercontent.com",
-
+          "client_id": "1006450807382-smh6h4sbfhh0pdal44jg4j1q9uu5op4n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-
-          "current_key": "AIzaSyATWS7cA8tb2HbELnDDXtWKPITOtOLy2l8"
-
+          "current_key": "AIzaSyDt9X9TAp08GjXW0tJSrN120DTnTAoIUyI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-
-              "client_id": "1079927007382-iv5medvubktefgj6i8netgll74s5pqfv.apps.googleusercontent.com",
-
+              "client_id": "1006450807382-smh6h4sbfhh0pdal44jg4j1q9uu5op4n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
