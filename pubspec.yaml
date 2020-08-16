@@ -43,7 +43,6 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/MOCK.json
     - assets/images/
 
   fonts:

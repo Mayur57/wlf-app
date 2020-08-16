@@ -152,7 +152,41 @@ class AboutUs extends StatelessWidget {
             ),
             child: Container(
               child: Text(
-                aboutUs, //TODO: Add AboutUs
+                aboutUs,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                    fontFamily: 'NHGTX',
+                    color: Color(0xFF5E5E5E),
+                    fontSize: 1.67 * SizeConfig.heightSizeMultiplier),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: 1 * SizeConfig.heightSizeMultiplier,
+                  left: 4 * SizeConfig.widthSizeMultiplier),
+              child: Text(
+                "Important Disclaimer",
+                style: TextStyle(
+                  fontFamily: 'NHGTXM',
+                  fontSize: 2.4 * SizeConfig.heightSizeMultiplier,
+                  color: Color(0xFF5E5E5E),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              top: 0.75 * SizeConfig.heightSizeMultiplier,
+              left: 1.80 * SizeConfig.heightSizeMultiplier,
+              right: 1.80 * SizeConfig.heightSizeMultiplier,
+              bottom: 2.3 * SizeConfig.heightSizeMultiplier,
+            ),
+            child: Container(
+              child: Text(
+                disclaimer,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontFamily: 'NHGTX',
@@ -301,63 +335,75 @@ class Developers extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.linkedin,
-                              color: Colors.white,
+                          Tooltip(
+                            message: 'Mayur Bhoi',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.linkedin,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link =
+                                    "https://www.linkedin.com/in/mayur-bhoi-a60081175";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link =
-                                  "https://www.linkedin.com/in/mayur-bhoi-a60081175";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.instagram,
-                              color: Colors.white,
+                          Tooltip(
+                            message: '@mayurbhoii',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.instagram,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link =
+                                    "https://www.instagram.com/mayurbhoii/";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link =
-                                  "https://www.instagram.com/mayurbhoii/";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.twitter,
-                              color: Colors.white,
+                          Tooltip(
+                            message: '@mayurtheboi',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.twitter,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link = "https://twitter.com/mayurtheboi";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link = "https://twitter.com/mayurtheboi";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.github,
-                              color: Colors.white,
+                          Tooltip(
+                            message: 'Mayur57',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.github,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link = "https://github.com/Mayur57";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link = "https://github.com/Mayur57";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
                         ],
                       ),
@@ -428,49 +474,58 @@ class Developers extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.linkedin,
-                              color: Colors.white,
+                          Tooltip(
+                            message: 'Aryaman Singh',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.linkedin,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link =
+                                    "https://www.linkedin.com/in/as-aryamansingh";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link =
-                                  "https://www.linkedin.com/in/as-aryamansingh";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.instagram,
-                              color: Colors.white,
+                          Tooltip(
+                            message: '@as.aryamansingh',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.instagram,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link =
+                                    "https://www.instagram.com/as.aryamansingh/";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link =
-                                  "https://www.instagram.com/as.aryamansingh/";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.github,
-                              color: Colors.white,
+                          Tooltip(
+                            message: 'aaryaa07',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.github,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link = "https://github.com/aaryaa07";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link = "https://github.com/aaryaa07";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
                         ],
                       ),
@@ -542,34 +597,40 @@ class Developers extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.linkedin,
-                              color: Colors.white,
+                          Tooltip(
+                            message: 'Kaustubh Sharma',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.linkedin,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link =
+                                    "https://www.linkedin.com/in/kaustubh-sharma-267469183";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link =
-                                  "https://www.linkedin.com/in/kaustubh-sharma-267469183";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
-                          IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.github,
-                              color: Colors.white,
+                          Tooltip(
+                            message: '1KS6',
+                            child: IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.github,
+                                color: Colors.white,
+                              ),
+                              onPressed: () async {
+                                String link = "https://github.com/1KS6";
+                                if (await canLaunch(link)) {
+                                  await launch(link);
+                                } else {
+                                  throw 'Could not launch the link';
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              String link = "https://github.com/1KS6";
-                              if (await canLaunch(link)) {
-                                await launch(link);
-                              } else {
-                                throw 'Could not launch the link';
-                              }
-                            },
                           ),
                         ],
                       ),
@@ -659,6 +720,29 @@ class PrivacyPolicy extends StatelessWidget {
     buildList() {
       return Column(
         children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(
+              top: 3.24 * SizeConfig.heightSizeMultiplier,
+            ),
+            child: Image.asset(
+              'assets/images/WLF_loginpage_header.png',
+              height: 60,
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding:
+                  EdgeInsets.only(top: 2.23 * SizeConfig.heightSizeMultiplier),
+              child: Text(
+                "Our Privacy Policy",
+                style: TextStyle(
+                  fontFamily: 'NHGTXM',
+                  fontSize: 2.95 * SizeConfig.heightSizeMultiplier,
+                  color: Color(0xFF5E5E5E),
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(
                 vertical: 2.23 * SizeConfig.heightSizeMultiplier,
@@ -754,6 +838,29 @@ class TermsAndConditions extends StatelessWidget {
     buildList() {
       return Column(
         children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(
+              top: 3.24 * SizeConfig.heightSizeMultiplier,
+            ),
+            child: Image.asset(
+              'assets/images/WLF_loginpage_header.png',
+              height: 60,
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding:
+                  EdgeInsets.only(top: 2.23 * SizeConfig.heightSizeMultiplier),
+              child: Text(
+                "Terms of Usage and EULA",
+                style: TextStyle(
+                  fontFamily: 'NHGTXM',
+                  fontSize: 2.95 * SizeConfig.heightSizeMultiplier,
+                  color: Color(0xFF5E5E5E),
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(
                 vertical: 2.23 * SizeConfig.heightSizeMultiplier,
