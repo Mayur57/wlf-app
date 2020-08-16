@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wlf/res/color.dart';
 import 'package:wlf/res/strings.dart';
 import 'package:wlf/util/authentication.dart';
 import '../util/scaler.dart';
@@ -264,20 +265,40 @@ class _LoginPageState extends State<LoginPage> {
   Future<bool> _onWillPop() async {
     return (await showDialog(
           context: context,
-          builder: (context) => new AlertDialog(
-            title: new Text('Are you sure?'),
-            content: new Text('Do you want to exit the App ?'),
-            actions: <Widget>[
-              new FlatButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: new Text('No'),
+          builder: (context) => AlertDialog(
+            title: Text(
+              'Exit',
+              style: TextStyle(
+                fontFamily: 'NHGTXM',
               ),
-              new FlatButton(
+            ),
+            content: Text(
+              'Are you sure you want to close the app?',
+              style: TextStyle(
+                fontFamily: 'NHGTX',
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text(
+                  'No',
+                  style: TextStyle(
+                    fontFamily: 'NHGTXM',
+                    color: mainColor,
+                  ),
+                ),
+              ),
+              FlatButton(
                 onPressed: () {
                   Future.value(true);
                   SystemNavigator.pop();
                 },
-                child: new Text('Yes'),
+                child: Text(
+                  'Yes',
+                  style:
+                      TextStyle(fontFamily: 'NHGTXM', color: Colors.redAccent),
+                ),
               ),
             ],
           ),
