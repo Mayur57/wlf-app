@@ -1,28 +1,25 @@
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
-import 'package:get_it/get_it.dart';
-import '../util/authentication.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SendMail {
-  Services _services = GetIt.I.get<Services>();
+    String platformResponse;
+    String user_id;
   Future<void> mail(String name , String issue) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+      user_id = prefs.getString('user_uid');
     String username = 'whatuplifefoundation@gmail.com';
-    String password = 'ronaldo*7';
-    final smtpServer = gmail(username, password);
-    final message = Message()
-      ..from = Address(username)
-      ..recipients.add(username)
-      ..subject = 'Issue by: '+ name
-      ..text = issue + '\n\n\nUnique User ID: ' + _services.status;
-
+    final Email email = Email(
+      body: issue + '\n\n\nUnique User ID: ' + user_id,
+      subject: 'Issue by: '+ name,
+      recipients: [username],
+      isHTML: false,
+    );
     try {
-      final sendReport = await send(message, smtpServer);
-      print('Message sent: ' + sendReport.toString());
-    } on MailerException catch (e) {
-      print('Message not sent.');
-      for (var p in e.problems) {
-        print('Problem: ${p.code}: ${p.msg}');
-      }
+      await FlutterEmailSender.send(email);
+      platformResponse = 'success';
+    } catch (error) {
+      platformResponse = error.toString();
     }
+    print(platformResponse);
   }
 }
