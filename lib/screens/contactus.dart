@@ -96,10 +96,10 @@ class _ContactUsState extends State<ContactUs>{
                         validator: (value) => value.length == 0
                             ? 'Please enter your full name'
                             : null,
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.text,
                         obscureText: false,
                         style: TextStyle(
-                            color: Colors.black, fontFamily: NHregular),
+                            color: Colors.black, fontFamily: 'NHGTX'),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(
                               1.11 * SizeConfig.heightSizeMultiplier),
@@ -126,9 +126,9 @@ class _ContactUsState extends State<ContactUs>{
                         },
                         validator: (value) =>
                             value.length == 0 ? 'Please enter a message' : null,
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.text,
                         style: TextStyle(
-                            color: Colors.black, fontFamily: NHregular),
+                            color: Colors.black, fontFamily: 'NHGTX'),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(1.11 *
                               SizeConfig.heightSizeMultiplier),
@@ -159,11 +159,11 @@ class _ContactUsState extends State<ContactUs>{
                                 _sendMail.mail(username, userMessage);
                                 Fluttertoast.showToast(
                                     msg:
-                                    "Thank You for writing to us! \nWe'll get back to you as soon as possible!",
+                                    "Thank you for writing to us! \nWe'll get back to you as soon as possible!",
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.CENTER,
                                     timeInSecForIosWeb: 1,
-                                    backgroundColor: Colors.blue,
+                                    backgroundColor: Colors.black87,
                                     textColor: Colors.white,
                                     fontSize: 1.78 *
                                         SizeConfig.heightSizeMultiplier);

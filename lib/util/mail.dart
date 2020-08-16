@@ -6,14 +6,14 @@ import '../util/authentication.dart';
 class SendMail {
   Services _services = GetIt.I.get<Services>();
   Future<void> mail(String name , String issue) async {
-    String username = 'vertotheapp@gmail.com';
-    String password = 'worlddomination';
+    String username = 'whatuplifefoundation@gmail.com';
+    String password = 'ronaldo*7';
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username)
       ..recipients.add(username)
-      ..subject = 'Issue by:'+ name
-      ..text = issue + '\nuid:' + _services.status;
+      ..subject = 'Issue by: '+ name
+      ..text = issue + '\n\n\nUnique User ID: ' + _services.status;
 
     try {
       final sendReport = await send(message, smtpServer);

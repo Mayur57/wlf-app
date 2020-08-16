@@ -137,9 +137,19 @@ class AboutUs extends StatelessWidget {
       return Column(
         children: <Widget>[
           Padding(
+            padding: EdgeInsets.only(
+              top: 2.24 * SizeConfig.heightSizeMultiplier,
+            ),
+            child: Image.asset(
+              'assets/images/WLF_loginpage_header.png',
+              height: 60,
+            ),
+          ),
+          Padding(
             padding: EdgeInsets.symmetric(
-                vertical: 2.24 * SizeConfig.heightSizeMultiplier,
-                horizontal: 1.80 * SizeConfig.heightSizeMultiplier),
+              vertical: 2.24 * SizeConfig.heightSizeMultiplier,
+              horizontal: 1.80 * SizeConfig.heightSizeMultiplier,
+            ),
             child: Container(
               child: Text(
                 aboutUs, //TODO: Add AboutUs
