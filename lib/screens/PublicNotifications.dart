@@ -8,7 +8,6 @@ import 'package:wlf/util/scaler.dart';
 class PublicNotifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance
           .collection("public_notifications")

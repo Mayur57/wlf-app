@@ -111,6 +111,19 @@ class SettingsState extends State<Settings> {
                 ),
               ),
             ),
+            Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: 2 * SizeConfig.heightSizeMultiplier),
+                child: Text(
+                  'Build Version: 1.0.3',
+                  style: TextStyle(
+                      fontSize: 1.6 * SizeConfig.heightSizeMultiplier,
+                      color: Colors.grey,
+                      fontFamily: 'NHGTX'),
+                ),
+              ),
+            ),
             SizedBox(
               height: 10 * SizeConfig.heightSizeMultiplier,
             ),
@@ -638,6 +651,14 @@ class Developers extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: 2 * SizeConfig.heightSizeMultiplier),
+            child: Image.asset(
+              'assets/images/technologiesUsed-01.png',
+              height: 7.83 * SizeConfig.heightSizeMultiplier,
             ),
           ),
         ],
