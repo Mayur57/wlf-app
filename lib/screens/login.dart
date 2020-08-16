@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                                   setState(() => userPassword = value);
                                 },
                                 validator: (value) => value.length < 6
-                                    ? 'Incorrect Password'
+                                    ? 'Invalid Password'
                                     : null,
                                 keyboardType: TextInputType.emailAddress,
                                 obscureText: true,
@@ -172,10 +172,6 @@ class _LoginPageState extends State<LoginPage> {
                                   child: FlatButton(
                                     onPressed: () {
                                       if (_formKey.currentState.validate()) {
-                                        setState(() {
-                                          _email.text = "";
-                                          _pass.text = "";
-                                        });
                                         _loaderFlagToggle();
                                         _login();
                                       }
@@ -267,7 +263,7 @@ class _LoginPageState extends State<LoginPage> {
           context: context,
           builder: (context) => AlertDialog(
             title: Text(
-              'Exit',
+              'Exit App',
               style: TextStyle(
                 fontFamily: 'NHGTXM',
               ),
@@ -282,7 +278,7 @@ class _LoginPageState extends State<LoginPage> {
               FlatButton(
                 onPressed: () => Navigator.of(context).pop(false),
                 child: Text(
-                  'No',
+                  'No, cancel',
                   style: TextStyle(
                     fontFamily: 'NHGTXM',
                     color: mainColor,
@@ -295,7 +291,7 @@ class _LoginPageState extends State<LoginPage> {
                   SystemNavigator.pop();
                 },
                 child: Text(
-                  'Yes',
+                  'Yes, exit',
                   style:
                       TextStyle(fontFamily: 'NHGTXM', color: Colors.redAccent),
                 ),

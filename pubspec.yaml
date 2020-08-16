@@ -56,8 +56,4 @@ flutter:
       fonts:
         - asset: assets/font/NHGTX_medium.ttf
 
-    - family: NHGTXB
-      fonts:
-        - asset: assets/font/NHGTX_bold.ttf
-
   uses-material-design: true
