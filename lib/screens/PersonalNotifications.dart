@@ -67,10 +67,6 @@ class PersonalNotifications extends StatelessWidget {
                                             color: Colors.white),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 1.11 *
-                                          SizeConfig.heightSizeMultiplier,
-                                    ),
                                     Flexible(
                                       child: Align(
                                         alignment: Alignment.topLeft,
