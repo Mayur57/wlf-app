@@ -159,7 +159,7 @@ class _ContactUsState extends State<ContactUs>{
                                 _sendMail.mail(username, userMessage);
                                 Fluttertoast.showToast(
                                     msg:
-                                    "Thank you for writing to us! \nWe'll get back to you as soon as possible!",
+                                    "Please proceed to your email app",
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.CENTER,
                                     timeInSecForIosWeb: 1,

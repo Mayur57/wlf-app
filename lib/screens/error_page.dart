@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wlf/res/strings.dart';
-
-import '../main.dart';
 
 
 ///Does NOT face the end user only for handling error during development
